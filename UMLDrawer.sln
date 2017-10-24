@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UMLDrawer", "UMLDrawer\UMLD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuiLayer", "GuiLayer\GuiLayer.csproj", "{3E1C1B20-3F9A-4876-8092-0CD666C5229D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppLayer", "AppLayer\AppLayer.csproj", "{8072CD3B-9D91-40E8-84DA-F042F687D98D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{3E1C1B20-3F9A-4876-8092-0CD666C5229D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E1C1B20-3F9A-4876-8092-0CD666C5229D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E1C1B20-3F9A-4876-8092-0CD666C5229D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8072CD3B-9D91-40E8-84DA-F042F687D98D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8072CD3B-9D91-40E8-84DA-F042F687D98D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8072CD3B-9D91-40E8-84DA-F042F687D98D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8072CD3B-9D91-40E8-84DA-F042F687D98D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
