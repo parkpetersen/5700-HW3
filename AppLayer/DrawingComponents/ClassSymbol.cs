@@ -12,6 +12,14 @@ namespace AppLayer.DrawingComponents
         public virtual Point Location { get; set; } = new Point(0, 0);
         public virtual Size Size { get; set; } = new Size(0, 0);
 
+        public ClassSymbol(Point location, Size size)
+        {
+            int x = location.X - (size.Width / 2);
+            int y = location.Y - (size.Height / 2);
+            this.Location = new Point(x, y);
+            this.Size = size;
+        }
+
         public override void Draw(Graphics graphics)
         {
             Pen pen = new Pen(Color.Black);

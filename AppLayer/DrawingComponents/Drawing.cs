@@ -12,7 +12,8 @@ namespace AppLayer.DrawingComponents
 {
     public class Drawing
     {
-        private List<Symbol> _Symbols = new List<Symbol>();
+        private List<ClassSymbol> _ClassSymbols = new List<ClassSymbol>();
+        private List<Symbol> _RelationShipLines = new List<Symbol>();
         public Symbol SelectedSymbol { get; set; }
         public bool IsDirty { get; set; }
 
@@ -22,7 +23,8 @@ namespace AppLayer.DrawingComponents
         {
             lock (_myLock)
             {
-                _Symbols.Clear();
+                _ClassSymbols.Clear();
+                _RelationShipLines.Clear();
                 IsDirty = true;
             }
         }
@@ -33,8 +35,17 @@ namespace AppLayer.DrawingComponents
             {
                 lock (_myLock)
                 {
-                    _Symbols.Add(symbol);
-                    IsDirty = true;
+                    if (symbol.type == "Class")
+                    {
+                        ClassSymbol classSymbol = symbol as ClassSymbol;
+                        _ClassSymbols.Add(classSymbol);
+                        IsDirty = true;
+                    }
+                    else
+                    {
+                        _RelationShipLines.Add(symbol);
+                        IsDirty = true;
+                    }
                 }
             }
         }
@@ -47,8 +58,17 @@ namespace AppLayer.DrawingComponents
                 {
                     if (SelectedSymbol == symbol)
                         SelectedSymbol = null;
-                    _Symbols.Remove(symbol);
-                    IsDirty = true;
+                    if (symbol.type == "Class")
+                    {
+                        ClassSymbol classSymbol = symbol as ClassSymbol;
+                        _ClassSymbols.Remove(classSymbol);
+                        IsDirty = true;
+                    }
+                    else
+                    {
+                        _RelationShipLines.Remove(symbol);
+                        IsDirty = true;
+                    }
                 }
             }
         }
@@ -57,7 +77,7 @@ namespace AppLayer.DrawingComponents
         {
             if (SelectedSymbol != null)
                 SelectedSymbol.IsSelected = false;
-            SelectedSymbol = FindSymbolAtPosition(location);
+            //SelectedSymbol = FindSymbolAtPosition(location);
 
             if (SelectedSymbol != null)
                 SelectedSymbol.IsSelected = true;
@@ -67,10 +87,14 @@ namespace AppLayer.DrawingComponents
 
         public Symbol FindSymbolAtPosition(Point location)
         { //needs work
-            Symbol result;
+            ClassSymbol result;
             lock (_myLock)
             {
-                
+                result = _ClassSymbols.FindLast(t => location.X >= t.Location.X &&
+                                              location.X < t.Location.X + t.Size.Width &&
+                                              location.Y >= t.Location.Y &&
+                                              location.Y < t.Location.Y + t.Size.Height);
+
             }
 
             return result;
@@ -80,7 +104,9 @@ namespace AppLayer.DrawingComponents
         {
             lock (_myLock)
             {
-                foreach (var s in _Symbols)
+                foreach (var s in _ClassSymbols)
+                    s.IsSelected = false;
+                foreach (var s in _RelationShipLines)
                     s.IsSelected = false;
                 IsDirty = true;
                 SelectedSymbol = null;
@@ -91,7 +117,9 @@ namespace AppLayer.DrawingComponents
         {
             lock (_myLock)
             {
-                _Symbols.RemoveAll(s => s.IsSelected);
+                _ClassSymbols.RemoveAll(s => s.IsSelected);
+                _RelationShipLines.RemoveAll(s => s.IsSelected);
+
             }
         }
 
@@ -112,7 +140,9 @@ namespace AppLayer.DrawingComponents
                 if (IsDirty)
                 {
                     graphics.Clear(Color.White);
-                    foreach (var s in _Symbols)
+                    foreach (var s in _RelationShipLines)  //draw lines first
+                        s.Draw(graphics);
+                    foreach (var s in _ClassSymbols)
                         s.Draw(graphics);
                     IsDirty = false;
                     didARedraw = true;
