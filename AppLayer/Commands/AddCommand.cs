@@ -14,9 +14,12 @@ namespace AppLayer.Commands
         Symbol Symbol;
         Point Location1;
         Point Location2;
+        RelationshipFactory RelationshipFactory = RelationshipFactory.Instance;
 
-        public AddCommand(string symbolType, Point location1, Point location2)
+        public AddCommand(string symbolType, Point location1, Point location2, Drawing drawing)
         {
+            this.TargetDrawing = drawing;
+            //RelationshipFactory = RelationshipFactory.Instance;
             //use factory here to create the right kind of symbol based on the string passed in.
             //for now creates a class
             if (symbolType == "Class")
@@ -29,7 +32,7 @@ namespace AppLayer.Commands
                 Location1 = location1;
                 Location2 = location2;
                 //use factory here to create the right kind of relationship line based on the string passed in.
-                this.Symbol = 
+                this.Symbol = RelationshipFactory.Instance.Create(symbolType);
             }
         }
 

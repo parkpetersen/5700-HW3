@@ -44,9 +44,11 @@
   <ItemGroup>
     <Compile Include="Commands\AddCommand.cs" />
     <Compile Include="Commands\Command.cs" />
+    <Compile Include="DrawingComponents\BinaryRelationship.cs" />
     <Compile Include="DrawingComponents\ClassSymbol.cs" />
     <Compile Include="DrawingComponents\Drawing.cs" />
     <Compile Include="DrawingComponents\Relationship.cs" />
+    <Compile Include="DrawingComponents\RelationshipFactory.cs" />
     <Compile Include="DrawingComponents\Symbol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

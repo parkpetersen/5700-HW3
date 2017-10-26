@@ -9,3 +9,15 @@ C:\Users\parkp\Desktop\5700\UMLDrawer\5700-HW3\GuiLayer\bin\Debug\AppLayer.dll
 C:\Users\parkp\Desktop\5700\UMLDrawer\5700-HW3\GuiLayer\bin\Debug\AppLayer.pdb
 C:\Users\parkp\Desktop\5700\UMLDrawer\5700-HW3\GuiLayer\obj\Debug\GuiLayer.dll
 C:\Users\parkp\Desktop\5700\UMLDrawer\5700-HW3\GuiLayer\obj\Debug\GuiLayer.pdb
+C:\Users\Parker Petersen\source\repos\UMLDrawer\GuiLayer\bin\Debug\GuiLayer.dll.config
+C:\Users\Parker Petersen\source\repos\UMLDrawer\GuiLayer\bin\Debug\GuiLayer.dll
+C:\Users\Parker Petersen\source\repos\UMLDrawer\GuiLayer\bin\Debug\GuiLayer.pdb
+C:\Users\Parker Petersen\source\repos\UMLDrawer\GuiLayer\bin\Debug\AppLayer.dll
+C:\Users\Parker Petersen\source\repos\UMLDrawer\GuiLayer\bin\Debug\AppLayer.pdb
+C:\Users\Parker Petersen\source\repos\UMLDrawer\GuiLayer\obj\Debug\GuiLayer.csprojResolveAssemblyReference.cache
+C:\Users\Parker Petersen\source\repos\UMLDrawer\GuiLayer\obj\Debug\GuiLayer.MainForm.resources
+C:\Users\Parker Petersen\source\repos\UMLDrawer\GuiLayer\obj\Debug\GuiLayer.Properties.Resources.resources
+C:\Users\Parker Petersen\source\repos\UMLDrawer\GuiLayer\obj\Debug\GuiLayer.csproj.GenerateResource.Cache
+C:\Users\Parker Petersen\source\repos\UMLDrawer\GuiLayer\obj\Debug\GuiLayer.csproj.CoreCompileInputs.cache
+C:\Users\Parker Petersen\source\repos\UMLDrawer\GuiLayer\obj\Debug\GuiLayer.dll
+C:\Users\Parker Petersen\source\repos\UMLDrawer\GuiLayer\obj\Debug\GuiLayer.pdb

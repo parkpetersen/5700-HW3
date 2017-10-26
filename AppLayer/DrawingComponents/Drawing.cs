@@ -19,6 +19,8 @@ namespace AppLayer.DrawingComponents
 
         private readonly object _myLock = new object();
 
+
+
         public void Clear()
         {
             lock (_myLock)
@@ -39,6 +41,7 @@ namespace AppLayer.DrawingComponents
                     {
                         ClassSymbol classSymbol = symbol as ClassSymbol;
                         _ClassSymbols.Add(classSymbol);
+                        Console.WriteLine($"added {classSymbol.type}");
                         IsDirty = true;
                     }
                     else
@@ -77,7 +80,7 @@ namespace AppLayer.DrawingComponents
         {
             if (SelectedSymbol != null)
                 SelectedSymbol.IsSelected = false;
-            //SelectedSymbol = FindSymbolAtPosition(location);
+            SelectedSymbol = FindSymbolAtPosition(location);
 
             if (SelectedSymbol != null)
                 SelectedSymbol.IsSelected = true;
@@ -87,16 +90,36 @@ namespace AppLayer.DrawingComponents
 
         public Symbol FindSymbolAtPosition(Point location)
         { //needs work
-            ClassSymbol result;
+            Symbol result = null;
+            Console.WriteLine("here");
             lock (_myLock)
             {
-                result = _ClassSymbols.FindLast(t => location.X >= t.Location.X &&
-                                              location.X < t.Location.X + t.Size.Width &&
-                                              location.Y >= t.Location.Y &&
-                                              location.Y < t.Location.Y + t.Size.Height);
+                Console.WriteLine("here2");
+
+
+                // result = _ClassSymbols.FindLast(t => location.X >= t.Location.X - (t.Size.Width/2) &&
+                // location.X < t.Location.X - (t.Size.Width/2) + t.Size.Width &&
+                // location.Y >= t.Location.Y - (t.Size.Height/2) &&
+                //  location.Y < t.Location.Y - (t.Size.Height/2) + t.Size.Height);
+                foreach (var s in _ClassSymbols)
+                {
+                    Console.WriteLine("here3");
+
+                    if (location.X >= s.Location.X - (s.Size.Width / 2) &&
+                        location.X < s.Location.X - (s.Size.Width / 2) + s.Size.Width &&
+                        location.Y >= s.Location.Y - (s.Size.Height/2) &&
+                        location.Y < s.Location.Y - (s.Size.Height/2) + s.Size.Height)
+                    {
+                        result = s;
+                    }
+                    else
+                    {
+                        Console.WriteLine("false");
+                    }
+                }
 
             }
-
+            //Console.WriteLine($"found {result.type}");
             return result;
         }
 

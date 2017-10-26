@@ -14,9 +14,8 @@ namespace AppLayer.DrawingComponents
 
         public ClassSymbol(Point location, Size size)
         {
-            int x = location.X - (size.Width / 2);
-            int y = location.Y - (size.Height / 2);
-            this.Location = new Point(x, y);
+            
+            this.Location = location;
             this.Size = size;
         }
 
@@ -24,8 +23,11 @@ namespace AppLayer.DrawingComponents
         {
             Pen pen = new Pen(Color.Black);
             SolidBrush brush = new SolidBrush(Color.BlueViolet);
-            
-            Rectangle rect = new Rectangle(Location, Size);
+            int x = Location.X - (Size.Width / 2);
+            int y = Location.Y - (Size.Height / 2);
+            Point modifiedLocation = new Point(x, y);
+
+            Rectangle rect = new Rectangle(modifiedLocation, Size);
             
             graphics.DrawRectangle(pen, rect);
             graphics.FillRectangle(brush, rect);

@@ -26,6 +26,12 @@ namespace GuiLayer
         {
             InitializeComponent();
             TargetDrawing = new Drawing();
+            DrawToolIcons();
+
+        }
+
+        private void DrawToolIcons()
+        {
 
         }
 
@@ -33,35 +39,37 @@ namespace GuiLayer
         {
             if (_SelectedTool == "Class")
             {
-                AddCommand addCommand = new AddCommand(_SelectedTool, e.Location, e.Location);
-                addCommand.TargetDrawing = TargetDrawing;
+                AddCommand addCommand = new AddCommand(_SelectedTool, e.Location, e.Location, TargetDrawing);
+                //addCommand.TargetDrawing = TargetDrawing;
                 addCommand.Execute();
                 DisplayDrawing();
             }
             else
             {
-                if(connected1 != null)
+                if(connected1 == null)
                 {
                     Symbol foundSymbol = TargetDrawing.FindSymbolAtPosition(e.Location);
-                    if (foundSymbol.type == "Class")
+                    if (foundSymbol != null && foundSymbol.type == "Class")
                     {
                         connected1 = foundSymbol as ClassSymbol;
+                        foundSymbol = null;
                     }
                 }
-                else if (connected2 != null)
+                else if (connected2 == null)
                 {
                     Symbol foundSymbol = TargetDrawing.FindSymbolAtPosition(e.Location);
-                    if (foundSymbol.type == "Class")
+                    if (foundSymbol != null && foundSymbol.type == "Class")
                     {
                         connected2 = foundSymbol as ClassSymbol;
+                        foundSymbol = null;
                     }
                 }
                 if(connected1 != null && connected2 != null)
                 {
-                    AddCommand addCommand = new AddCommand(_SelectedTool, connected1.Location, connected2.Location);
+                    AddCommand addCommand = new AddCommand(_SelectedTool, connected1.Location, connected2.Location, TargetDrawing);
                     connected1 = null;
                     connected2 = null;
-                    addCommand.TargetDrawing = TargetDrawing;
+                    //addCommand.TargetDrawing = TargetDrawing;
                     addCommand.Execute();
                     DisplayDrawing();
                 }
@@ -86,9 +94,9 @@ namespace GuiLayer
             _SelectedTool = "Class";
         }
 
-        private void LineSelectPanel_MouseUp(object sender, MouseEventArgs e)
+        private void BinarySelectPanel_MouseUp(object sender, MouseEventArgs e)
         {
-            _SelectedTool = "Line";
+            _SelectedTool = "Binary";
         }
     }
 }

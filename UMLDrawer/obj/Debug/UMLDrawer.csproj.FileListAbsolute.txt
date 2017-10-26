@@ -10,3 +10,17 @@ C:\Users\parkp\Desktop\5700\UMLDrawer\5700-HW3\UMLDrawer\bin\Debug\AppLayer.pdb
 C:\Users\parkp\Desktop\5700\UMLDrawer\5700-HW3\UMLDrawer\obj\Debug\UMLDrawer.csprojResolveAssemblyReference.cache
 C:\Users\parkp\Desktop\5700\UMLDrawer\5700-HW3\UMLDrawer\obj\Debug\UMLDrawer.exe
 C:\Users\parkp\Desktop\5700\UMLDrawer\5700-HW3\UMLDrawer\obj\Debug\UMLDrawer.pdb
+C:\Users\Parker Petersen\source\repos\UMLDrawer\UMLDrawer\bin\Debug\UMLDrawer.exe.config
+C:\Users\Parker Petersen\source\repos\UMLDrawer\UMLDrawer\bin\Debug\UMLDrawer.exe
+C:\Users\Parker Petersen\source\repos\UMLDrawer\UMLDrawer\bin\Debug\UMLDrawer.pdb
+C:\Users\Parker Petersen\source\repos\UMLDrawer\UMLDrawer\bin\Debug\GuiLayer.dll
+C:\Users\Parker Petersen\source\repos\UMLDrawer\UMLDrawer\bin\Debug\AppLayer.dll
+C:\Users\Parker Petersen\source\repos\UMLDrawer\UMLDrawer\bin\Debug\GuiLayer.pdb
+C:\Users\Parker Petersen\source\repos\UMLDrawer\UMLDrawer\bin\Debug\GuiLayer.dll.config
+C:\Users\Parker Petersen\source\repos\UMLDrawer\UMLDrawer\bin\Debug\AppLayer.pdb
+C:\Users\Parker Petersen\source\repos\UMLDrawer\UMLDrawer\obj\Debug\UMLDrawer.csprojResolveAssemblyReference.cache
+C:\Users\Parker Petersen\source\repos\UMLDrawer\UMLDrawer\obj\Debug\UMLDrawer.Properties.Resources.resources
+C:\Users\Parker Petersen\source\repos\UMLDrawer\UMLDrawer\obj\Debug\UMLDrawer.csproj.GenerateResource.Cache
+C:\Users\Parker Petersen\source\repos\UMLDrawer\UMLDrawer\obj\Debug\UMLDrawer.csproj.CoreCompileInputs.cache
+C:\Users\Parker Petersen\source\repos\UMLDrawer\UMLDrawer\obj\Debug\UMLDrawer.exe
+C:\Users\Parker Petersen\source\repos\UMLDrawer\UMLDrawer\obj\Debug\UMLDrawer.pdb

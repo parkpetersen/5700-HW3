@@ -31,10 +31,10 @@
             this.DrawingPanel = new System.Windows.Forms.Panel();
             this.ClassIconPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.LineSelectPanel = new System.Windows.Forms.Panel();
+            this.BinarySelectPanel = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.ClassIconPanel.SuspendLayout();
-            this.LineSelectPanel.SuspendLayout();
+            this.BinarySelectPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // DrawingPanel
@@ -65,39 +65,39 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Class";
             // 
-            // LineSelectPanel
+            // BinarySelectPanel
             // 
-            this.LineSelectPanel.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.LineSelectPanel.Controls.Add(this.label2);
-            this.LineSelectPanel.Location = new System.Drawing.Point(12, 198);
-            this.LineSelectPanel.Name = "LineSelectPanel";
-            this.LineSelectPanel.Size = new System.Drawing.Size(126, 80);
-            this.LineSelectPanel.TabIndex = 1;
-            this.LineSelectPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.LineSelectPanel_MouseUp);
+            this.BinarySelectPanel.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.BinarySelectPanel.Controls.Add(this.label2);
+            this.BinarySelectPanel.Location = new System.Drawing.Point(12, 198);
+            this.BinarySelectPanel.Name = "BinarySelectPanel";
+            this.BinarySelectPanel.Size = new System.Drawing.Size(126, 80);
+            this.BinarySelectPanel.TabIndex = 1;
+            this.BinarySelectPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BinarySelectPanel_MouseUp);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(36, 4);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(27, 13);
+            this.label2.Size = new System.Drawing.Size(36, 13);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Line";
+            this.label2.Text = "Binary";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1078, 667);
-            this.Controls.Add(this.LineSelectPanel);
+            this.Controls.Add(this.BinarySelectPanel);
             this.Controls.Add(this.ClassIconPanel);
             this.Controls.Add(this.DrawingPanel);
             this.Name = "MainForm";
             this.Text = "Form1";
             this.ClassIconPanel.ResumeLayout(false);
             this.ClassIconPanel.PerformLayout();
-            this.LineSelectPanel.ResumeLayout(false);
-            this.LineSelectPanel.PerformLayout();
+            this.BinarySelectPanel.ResumeLayout(false);
+            this.BinarySelectPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -107,7 +107,7 @@
         private System.Windows.Forms.Panel DrawingPanel;
         private System.Windows.Forms.Panel ClassIconPanel;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel LineSelectPanel;
+        private System.Windows.Forms.Panel BinarySelectPanel;
         private System.Windows.Forms.Label label2;
     }
 }
