@@ -13,7 +13,7 @@ namespace AppLayer.DrawingComponents
     public class Drawing
     {
         private List<ClassSymbol> _ClassSymbols = new List<ClassSymbol>();
-        private List<Symbol> _RelationShipLines = new List<Symbol>();
+        private List<Relationship> _RelationShipLines = new List<Relationship>();
         public Symbol SelectedSymbol { get; set; }
         public bool IsDirty { get; set; }
 
@@ -46,7 +46,10 @@ namespace AppLayer.DrawingComponents
                     }
                     else
                     {
-                        _RelationShipLines.Add(symbol);
+                        Relationship relationship = symbol as Relationship;
+                        _RelationShipLines.Add(relationship);
+                        Console.WriteLine($"added {relationship.type}");
+
                         IsDirty = true;
                     }
                 }
@@ -69,7 +72,8 @@ namespace AppLayer.DrawingComponents
                     }
                     else
                     {
-                        _RelationShipLines.Remove(symbol);
+                        Relationship relationship = symbol as Relationship;
+                        _RelationShipLines.Remove(relationship);
                         IsDirty = true;
                     }
                 }
@@ -112,14 +116,9 @@ namespace AppLayer.DrawingComponents
                     {
                         result = s;
                     }
-                    else
-                    {
-                        Console.WriteLine("false");
-                    }
                 }
 
             }
-            //Console.WriteLine($"found {result.type}");
             return result;
         }
 
@@ -164,9 +163,14 @@ namespace AppLayer.DrawingComponents
                 {
                     graphics.Clear(Color.White);
                     foreach (var s in _RelationShipLines)  //draw lines first
+                    {
                         s.Draw(graphics);
+                        Console.WriteLine(s.type);
+                    }
                     foreach (var s in _ClassSymbols)
+                    {
                         s.Draw(graphics);
+                    }
                     IsDirty = false;
                     didARedraw = true;
                 }

@@ -12,6 +12,7 @@ namespace AppLayer.DrawingComponents
         public string type { get; set; }
         public virtual bool IsSelected { get; set; } = false;
         public virtual void Draw(Graphics graphics) { }
+        public string label { get; set; }
 
     }
 }

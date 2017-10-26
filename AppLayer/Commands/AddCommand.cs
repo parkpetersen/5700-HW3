@@ -26,18 +26,22 @@ namespace AppLayer.Commands
             {
                 Location1 = location1;
                 this.Symbol = new ClassSymbol(Location1, new Size(80, 80));
+                this.Symbol.type = "Class";
             }
             else
             {
                 Location1 = location1;
                 Location2 = location2;
                 //use factory here to create the right kind of relationship line based on the string passed in.
-                this.Symbol = RelationshipFactory.Instance.Create(symbolType);
+                this.Symbol = Symbol as Relationship;
+                this.Symbol = RelationshipFactory.Instance.Create(symbolType, Location1, Location2);
+                this.Symbol.type = symbolType;
             }
         }
 
         public override void Execute()
         {
+            Console.WriteLine(Symbol.type);
             TargetDrawing.Add(Symbol);
         }
 

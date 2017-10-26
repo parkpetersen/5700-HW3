@@ -20,14 +20,28 @@ namespace GuiLayer
         private Graphics _panelGraphics;
 
         private string _SelectedTool;
-        public ClassSymbol connected1, connected2;
+        public ClassSymbol connected1 = null;
+        public ClassSymbol connected2 = null;
 
         public MainForm()
         {
             InitializeComponent();
             TargetDrawing = new Drawing();
+            Timer timer = new Timer();
+            timer.Interval = (1000);
+            timer.Tick += new EventHandler(timer_tick);
+            timer.Start();
             DrawToolIcons();
+            
 
+        }
+
+        private void timer_tick(object sender, EventArgs e)
+        {
+            if (TargetDrawing.IsDirty)
+            {
+                DisplayDrawing();
+            }
         }
 
         private void DrawToolIcons()
@@ -39,39 +53,54 @@ namespace GuiLayer
         {
             if (_SelectedTool == "Class")
             {
-                AddCommand addCommand = new AddCommand(_SelectedTool, e.Location, e.Location, TargetDrawing);
+                AddCommand addCommand = new AddCommand("Class", e.Location, e.Location, TargetDrawing);
                 //addCommand.TargetDrawing = TargetDrawing;
                 addCommand.Execute();
                 DisplayDrawing();
             }
             else
             {
-                if(connected1 == null)
+                if (_SelectedTool == "Binary")
                 {
-                    Symbol foundSymbol = TargetDrawing.FindSymbolAtPosition(e.Location);
-                    if (foundSymbol != null && foundSymbol.type == "Class")
+                    if (connected1 == null)
                     {
-                        connected1 = foundSymbol as ClassSymbol;
-                        foundSymbol = null;
+                        Symbol foundSymbol = TargetDrawing.FindSymbolAtPosition(e.Location);
+                        if (foundSymbol != null && foundSymbol.type == "Class")
+                        {
+                            connected1 = foundSymbol as ClassSymbol;
+                            Console.WriteLine($"connected1: {connected1.Location.X},{connected1.Location.Y}.");
+                            foundSymbol = null;
+                        }
+                    }
+                    else if (connected2 == null)
+                    {
+                        Symbol foundSymbol = TargetDrawing.FindSymbolAtPosition(e.Location);
+                        if (foundSymbol != null && foundSymbol.type == "Class")
+                        {
+                            connected2 = foundSymbol as ClassSymbol;
+                            Console.WriteLine($"connected2: {connected2.Location.X},{connected2.Location.Y}.");
+                            foundSymbol = null;
+                        }
+                    }
+                    if (connected1 != null && connected2 != null)
+                    {
+                        AddCommand addCommand = new AddCommand(_SelectedTool, connected1.Location, connected2.Location, TargetDrawing);
+                        connected1 = null;
+                        connected2 = null;
+                        //addCommand.TargetDrawing = TargetDrawing;
+                        addCommand.Execute();
+                        DisplayDrawing();
                     }
                 }
-                else if (connected2 == null)
+                else if(_SelectedTool == "Edit")
                 {
                     Symbol foundSymbol = TargetDrawing.FindSymbolAtPosition(e.Location);
-                    if (foundSymbol != null && foundSymbol.type == "Class")
+                    if (foundSymbol.type == "Class")
                     {
-                        connected2 = foundSymbol as ClassSymbol;
-                        foundSymbol = null;
+                        ClassSymbol foundClass = foundSymbol as ClassSymbol;
+                        EditClass editClassWindow = new EditClass(foundClass, TargetDrawing);
+                        editClassWindow.Show();
                     }
-                }
-                if(connected1 != null && connected2 != null)
-                {
-                    AddCommand addCommand = new AddCommand(_SelectedTool, connected1.Location, connected2.Location, TargetDrawing);
-                    connected1 = null;
-                    connected2 = null;
-                    //addCommand.TargetDrawing = TargetDrawing;
-                    addCommand.Execute();
-                    DisplayDrawing();
                 }
             }
         }
@@ -97,6 +126,11 @@ namespace GuiLayer
         private void BinarySelectPanel_MouseUp(object sender, MouseEventArgs e)
         {
             _SelectedTool = "Binary";
+        }
+
+        private void EditSelectPanel_MouseUp(object sender, MouseEventArgs e)
+        {
+            _SelectedTool = "Edit";
         }
     }
 }

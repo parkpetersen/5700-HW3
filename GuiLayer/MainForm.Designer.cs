@@ -33,8 +33,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.BinarySelectPanel = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.EditSelectPanel = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.ClassIconPanel.SuspendLayout();
             this.BinarySelectPanel.SuspendLayout();
+            this.EditSelectPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // DrawingPanel
@@ -84,11 +87,31 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Binary";
             // 
+            // EditSelectPanel
+            // 
+            this.EditSelectPanel.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.EditSelectPanel.Controls.Add(this.label3);
+            this.EditSelectPanel.Location = new System.Drawing.Point(12, 528);
+            this.EditSelectPanel.Name = "EditSelectPanel";
+            this.EditSelectPanel.Size = new System.Drawing.Size(126, 79);
+            this.EditSelectPanel.TabIndex = 0;
+            this.EditSelectPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.EditSelectPanel_MouseUp);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(36, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(25, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Edit";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1078, 667);
+            this.Controls.Add(this.EditSelectPanel);
             this.Controls.Add(this.BinarySelectPanel);
             this.Controls.Add(this.ClassIconPanel);
             this.Controls.Add(this.DrawingPanel);
@@ -98,6 +121,8 @@
             this.ClassIconPanel.PerformLayout();
             this.BinarySelectPanel.ResumeLayout(false);
             this.BinarySelectPanel.PerformLayout();
+            this.EditSelectPanel.ResumeLayout(false);
+            this.EditSelectPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -109,6 +134,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel BinarySelectPanel;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel EditSelectPanel;
+        private System.Windows.Forms.Label label3;
     }
 }
 

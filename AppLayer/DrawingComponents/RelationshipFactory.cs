@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace AppLayer.DrawingComponents
 {
@@ -26,11 +27,11 @@ namespace AppLayer.DrawingComponents
             }
         }
 
-        public Relationship Create(string type)
+        public Relationship Create(string type, Point location1, Point location2)
         {
             if(type == "Binary")
             {
-                return new BinaryRelationship();
+                return new BinaryRelationship(location1, location2);
             }
             else
             {
