@@ -44,10 +44,14 @@
   <ItemGroup>
     <Compile Include="Commands\AddCommand.cs" />
     <Compile Include="Commands\Command.cs" />
+    <Compile Include="Commands\EditBinaryCommand.cs" />
     <Compile Include="Commands\EditClassCommand.cs" />
+    <Compile Include="DrawingComponents\AggregationRelationship.cs" />
     <Compile Include="DrawingComponents\BinaryRelationship.cs" />
     <Compile Include="DrawingComponents\ClassSymbol.cs" />
+    <Compile Include="DrawingComponents\CompositionRelationship.cs" />
     <Compile Include="DrawingComponents\Drawing.cs" />
+    <Compile Include="DrawingComponents\Generalization.cs" />
     <Compile Include="DrawingComponents\Relationship.cs" />
     <Compile Include="DrawingComponents\RelationshipFactory.cs" />
     <Compile Include="DrawingComponents\Symbol.cs" />

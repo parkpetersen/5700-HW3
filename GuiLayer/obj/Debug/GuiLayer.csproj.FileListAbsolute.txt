@@ -22,3 +22,4 @@ C:\Users\Parker Petersen\source\repos\UMLDrawer\GuiLayer\obj\Debug\GuiLayer.cspr
 C:\Users\Parker Petersen\source\repos\UMLDrawer\GuiLayer\obj\Debug\GuiLayer.dll
 C:\Users\Parker Petersen\source\repos\UMLDrawer\GuiLayer\obj\Debug\GuiLayer.pdb
 C:\Users\parkp\Desktop\5700\UMLDrawer\5700-HW3\GuiLayer\obj\Debug\GuiLayer.EditClass.resources
+C:\Users\parkp\Desktop\5700\UMLDrawer\5700-HW3\GuiLayer\obj\Debug\GuiLayer.EditBinary.resources

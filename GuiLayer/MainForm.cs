@@ -60,7 +60,7 @@ namespace GuiLayer
             }
             else
             {
-                if (_SelectedTool == "Binary")
+                if (_SelectedTool == "Binary" || _SelectedTool == "Aggregation" || _SelectedTool == "Composition")
                 {
                     if (connected1 == null)
                     {
@@ -68,7 +68,6 @@ namespace GuiLayer
                         if (foundSymbol != null && foundSymbol.type == "Class")
                         {
                             connected1 = foundSymbol as ClassSymbol;
-                            Console.WriteLine($"connected1: {connected1.Location.X},{connected1.Location.Y}.");
                             foundSymbol = null;
                         }
                     }
@@ -78,7 +77,6 @@ namespace GuiLayer
                         if (foundSymbol != null && foundSymbol.type == "Class")
                         {
                             connected2 = foundSymbol as ClassSymbol;
-                            Console.WriteLine($"connected2: {connected2.Location.X},{connected2.Location.Y}.");
                             foundSymbol = null;
                         }
                     }
@@ -87,7 +85,6 @@ namespace GuiLayer
                         AddCommand addCommand = new AddCommand(_SelectedTool, connected1.Location, connected2.Location, TargetDrawing);
                         connected1 = null;
                         connected2 = null;
-                        //addCommand.TargetDrawing = TargetDrawing;
                         addCommand.Execute();
                         DisplayDrawing();
                     }
@@ -100,6 +97,13 @@ namespace GuiLayer
                         ClassSymbol foundClass = foundSymbol as ClassSymbol;
                         EditClass editClassWindow = new EditClass(foundClass, TargetDrawing);
                         editClassWindow.Show();
+                    }
+                    else if (foundSymbol.type == "Binary")
+                    {
+                        BinaryRelationship foundBinary = foundSymbol as BinaryRelationship;
+                        EditBinary editBinaryWindow = new EditBinary(foundBinary, TargetDrawing);
+                        editBinaryWindow.Show();
+
                     }
                 }
             }
@@ -131,6 +135,16 @@ namespace GuiLayer
         private void EditSelectPanel_MouseUp(object sender, MouseEventArgs e)
         {
             _SelectedTool = "Edit";
+        }
+
+        private void AggregationSelectPanel_MouseUp(object sender, MouseEventArgs e)
+        {
+            _SelectedTool = "Aggregation";
+        }
+
+        private void CompositionSelectPanel_MouseUp(object sender, MouseEventArgs e)
+        {
+            _SelectedTool = "Composition";
         }
     }
 }

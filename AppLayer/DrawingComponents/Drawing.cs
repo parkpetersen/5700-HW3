@@ -107,8 +107,6 @@ namespace AppLayer.DrawingComponents
                 //  location.Y < t.Location.Y - (t.Size.Height/2) + t.Size.Height);
                 foreach (var s in _ClassSymbols)
                 {
-                    Console.WriteLine("here3");
-
                     if (location.X >= s.Location.X - (s.Size.Width / 2) &&
                         location.X < s.Location.X - (s.Size.Width / 2) + s.Size.Width &&
                         location.Y >= s.Location.Y - (s.Size.Height/2) &&
@@ -116,6 +114,10 @@ namespace AppLayer.DrawingComponents
                     {
                         result = s;
                     }
+                }
+                foreach(var l in _RelationShipLines)
+                {
+                    //find a line
                 }
 
             }

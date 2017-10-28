@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EditBinary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditBinary.Designer.cs">
+      <DependentUpon>EditBinary.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditClass.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +67,9 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="EditBinary.resx">
+      <DependentUpon>EditBinary.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditClass.resx">
       <DependentUpon>EditClass.cs</DependentUpon>
     </EmbeddedResource>

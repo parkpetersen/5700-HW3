@@ -27,11 +27,23 @@ namespace AppLayer.DrawingComponents
             }
         }
 
-        public Relationship Create(string type, Point location1, Point location2)
+        public Relationship Create(string type, Point location1, Point location2, Drawing drawing)
         {
             if(type == "Binary")
             {
                 return new BinaryRelationship(location1, location2);
+            }
+            else if(type == "Aggregation")
+            {
+                Symbol symbol = drawing.FindSymbolAtPosition(location1);
+                ClassSymbol classSymbol = symbol as ClassSymbol;
+                return new AggregationRelationship(location1, location2, classSymbol);
+            }
+            else if(type == "Composition")
+            {
+                Symbol symbol = drawing.FindSymbolAtPosition(location1);
+                ClassSymbol classSymbol = symbol as ClassSymbol;
+                return new CompositionRelationship(location1, location2, classSymbol);
             }
             else
             {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AppLayer.DrawingComponents
 {
-    class BinaryRelationship : Relationship
+    public class BinaryRelationship : Relationship
     {
         public BinaryRelationship(Point location1, Point location2)
         {
@@ -26,13 +26,29 @@ namespace AppLayer.DrawingComponents
             Point midpoint = new Point();
             midpoint.X = (Location1.X + Location2.X) / 2;
             midpoint.Y = (Location1.Y + Location2.Y) / 2 - 5;
-            graphics.DrawString(label, font, Brushes.Black, midpoint);
+            Point labelLocation = new Point(midpoint.X, midpoint.Y - 20);
+            graphics.DrawString(label, font, Brushes.Black, labelLocation);
             //work on forming triangle to represent an arrow
-            Point p1 = new Point(midpoint.X, midpoint.Y - 5);
-            Point p2 = new Point(midpoint.X, midpoint.Y + 5);
-            Point p3 = new Point(Location2.X - midpoint.X) 
-            graphics.DrawPolygon(pen, )
+            Point p1 = new Point(midpoint.X, midpoint.Y - 10);
+            Point p2 = new Point(midpoint.X, midpoint.Y + 10);
+            Point p3 = new Point(midpoint.X + 10 * ((Location2.X - midpoint.X) / Math.Abs(Location2.X - midpoint.X)), midpoint.Y);
+            Point[] Points = new Point[]
+            {
+                p1,
+                p2,
+                p3
+            };
+            //graphics.DrawLine(pen, p1, p2);
+            //graphics.DrawLine(pen, p2, p3);
+            //graphics.DrawLine(pen, p3, p1);
+            graphics.DrawPolygon(pen, Points);
+            graphics.FillPolygon(Brushes.Black, Points);
             pen.Dispose();
+        }
+
+        public void EditBinary(string newLabel)
+        {
+            this.label = newLabel;
         }
     }
 }

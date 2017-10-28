@@ -34,7 +34,7 @@ namespace AppLayer.Commands
                 Location2 = location2;
                 //use factory here to create the right kind of relationship line based on the string passed in.
                 this.Symbol = Symbol as Relationship;
-                this.Symbol = RelationshipFactory.Instance.Create(symbolType, Location1, Location2);
+                this.Symbol = RelationshipFactory.Instance.Create(symbolType, Location1, Location2, TargetDrawing);
                 this.Symbol.type = symbolType;
             }
         }
