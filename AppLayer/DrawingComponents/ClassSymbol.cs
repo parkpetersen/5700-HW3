@@ -29,6 +29,11 @@ namespace AppLayer.DrawingComponents
             this.ClassColor = color;
         }
 
+        public void MoveClass(Point newLocation)
+        {
+            this.Location = newLocation;
+        }
+
         public override void Draw(Graphics graphics)
         {
             Pen pen = new Pen(Color.Black);

@@ -10,24 +10,28 @@ namespace AppLayer.Commands
     public class EditBinaryCommand : Command
     {
         public BinaryRelationship line { get; set; }
+        public string oldLabel { get; set; }
         public string editedLabel { get; set; }
 
         public EditBinaryCommand(BinaryRelationship line, string label, Drawing drawing)
         {
             this.line = line;
+            oldLabel = line.label;
             this.editedLabel = label;
             this.TargetDrawing = drawing;
         }
 
-        public override void Execute()
+        public override bool Execute()
         {
             line.EditBinary(editedLabel);
             TargetDrawing.IsDirty = true;
+            return true;
         }
 
         public override void Undo()
         {
-            throw new NotImplementedException();
+            line.EditBinary(oldLabel);
+            TargetDrawing.IsDirty = true;
         }
     }
 }

@@ -20,20 +20,25 @@ namespace GuiLayer
         private Graphics _panelGraphics;
 
         private string _SelectedTool;
-        public ClassSymbol connected1 = null;
-        public ClassSymbol connected2 = null;
+        public ClassSymbol selected1 = null;
+        public ClassSymbol selected2 = null;
+        public Point defaultLocation = new Point(1, 1);
+        public Point moveToLocation;
+        private readonly Invoker _invoker = new Invoker();
 
         public MainForm()
         {
             InitializeComponent();
             TargetDrawing = new Drawing();
             Timer timer = new Timer();
-            timer.Interval = (1000);
+            timer.Interval = (100);
             timer.Tick += new EventHandler(timer_tick);
             timer.Start();
             ResetColors();
             DrawToolIcons();
-            
+            moveToLocation = defaultLocation;
+
+            _invoker.Start();
 
         }
 
@@ -55,38 +60,37 @@ namespace GuiLayer
             if (_SelectedTool == "Class")
             {
                 AddCommand addCommand = new AddCommand("Class", e.Location, e.Location, TargetDrawing);
-                //addCommand.TargetDrawing = TargetDrawing;
-                addCommand.Execute();
+                _invoker.EnqueueCommandForExecution(addCommand);
                 DisplayDrawing();
             }
             else
             {
                 if (_SelectedTool == "Binary" || _SelectedTool == "Aggregation" || _SelectedTool == "Composition" || _SelectedTool == "Generalization" || _SelectedTool == "Dependency")
                 {
-                    if (connected1 == null)
+                    if (selected1 == null)
                     {
                         Symbol foundSymbol = TargetDrawing.FindSymbolAtPosition(e.Location);
                         if (foundSymbol != null && foundSymbol.type == "Class")
                         {
-                            connected1 = foundSymbol as ClassSymbol;
+                            selected1 = foundSymbol as ClassSymbol;
                             foundSymbol = null;
                         }
                     }
-                    else if (connected2 == null)
+                    else if (selected2 == null)
                     {
                         Symbol foundSymbol = TargetDrawing.FindSymbolAtPosition(e.Location);
                         if (foundSymbol != null && foundSymbol.type == "Class")
                         {
-                            connected2 = foundSymbol as ClassSymbol;
+                            selected2 = foundSymbol as ClassSymbol;
                             foundSymbol = null;
                         }
                     }
-                    if (connected1 != null && connected2 != null)
+                    if (selected1 != null && selected2 != null)
                     {
-                        AddCommand addCommand = new AddCommand(_SelectedTool, connected1.Location, connected2.Location, TargetDrawing);
-                        connected1 = null;
-                        connected2 = null;
-                        addCommand.Execute();
+                        AddCommand addCommand = new AddCommand(_SelectedTool, selected1.Location, selected2.Location, TargetDrawing);
+                        selected1 = null;
+                        selected2 = null;
+                        _invoker.EnqueueCommandForExecution(addCommand);
                         DisplayDrawing();
                     }
                 }
@@ -100,13 +104,13 @@ namespace GuiLayer
                     else if (foundSymbol.type == "Class")
                     {
                         ClassSymbol foundClass = foundSymbol as ClassSymbol;
-                        EditClass editClassWindow = new EditClass(foundClass, TargetDrawing);
+                        EditClass editClassWindow = new EditClass(foundClass, TargetDrawing, _invoker);
                         editClassWindow.Show();
                     }
                     else if (foundSymbol.type == "Binary")
                     {
                         BinaryRelationship foundBinary = foundSymbol as BinaryRelationship;
-                        EditBinary editBinaryWindow = new EditBinary(foundBinary, TargetDrawing);
+                        EditBinary editBinaryWindow = new EditBinary(foundBinary, TargetDrawing, _invoker);
                         editBinaryWindow.Show();
 
                     }
@@ -126,11 +130,46 @@ namespace GuiLayer
                             if(TargetDrawing._RelationShipLines[i].Location1 == classSymbol.Location || TargetDrawing._RelationShipLines[i].Location2 == classSymbol.Location)
                             {
                                 DeleteCommand deleteLineCommand = new DeleteCommand(TargetDrawing._RelationShipLines[i], TargetDrawing);
-                                deleteLineCommand.Execute();
+                                _invoker.EnqueueCommandForExecution(deleteLineCommand);
                             }
                         }
                         DeleteCommand command = new DeleteCommand(classSymbol, TargetDrawing);
-                        command.Execute();
+                        _invoker.EnqueueCommandForExecution(command);
+                    }
+                }
+                else if(_SelectedTool == "Move")
+                {
+                    if(selected1 == null)
+                    {
+                        Symbol foundSymbol = TargetDrawing.FindSymbolAtPosition(e.Location);
+                        if (foundSymbol == null)
+                        {
+
+                        }
+                        else if (foundSymbol.type == "Class")
+                        {
+                            selected1 = foundSymbol as ClassSymbol;
+                        }
+                    }
+                    else if(moveToLocation == defaultLocation)
+                    {
+                        moveToLocation = e.Location;
+                    }
+
+                    if(selected1 != null && moveToLocation != defaultLocation)
+                    {
+                        for(int i = 0; i < TargetDrawing._RelationShipLines.Count; i++)
+                        {
+                            if(TargetDrawing._RelationShipLines[i].Location1 == selected1.Location || TargetDrawing._RelationShipLines[i].Location2 == selected1.Location)
+                            {
+                                MoveLineCommand moveCommand = new MoveLineCommand(TargetDrawing._RelationShipLines[i], selected1.Location, moveToLocation, TargetDrawing);
+                                _invoker.EnqueueCommandForExecution(moveCommand);
+                            }
+                        }
+                        MoveClassCommand moveClass = new MoveClassCommand(selected1, moveToLocation, TargetDrawing);
+                        _invoker.EnqueueCommandForExecution(moveClass);
+                        selected1 = null;
+                        moveToLocation = defaultLocation;
                     }
                 }
             }
@@ -215,8 +254,38 @@ namespace GuiLayer
             GeneralizationSelectPanel.BackColor = Color.LightBlue;
             DependencySelectPanel.BackColor = Color.LightBlue;
             DeleteToolSelectPanel.BackColor = Color.LightBlue;
+            UndoSelectPanel.BackColor = Color.LightBlue;
+            RedoSelectPanel.BackColor = Color.LightBlue;
+            MoveSelectPanel.BackColor = Color.LightBlue;
         }
 
-      
+        private void UndoSelectPanel_MouseUp(object sender, MouseEventArgs e)
+        {
+            _invoker.Undo();
+            ResetColors();
+        }
+
+        private void UndoSelectPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            UndoSelectPanel.BackColor = Color.LightYellow;
+        }
+
+        private void RedoSelectPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            RedoSelectPanel.BackColor = Color.LightYellow;
+        }
+
+        private void RedoSelectPanel_MouseUp(object sender, MouseEventArgs e)
+        {
+            _invoker.Redo();
+            ResetColors();
+        }
+
+        private void MoveSelectPanel_MouseUp(object sender, MouseEventArgs e)
+        {
+            ResetColors();
+            _SelectedTool = "Move";
+            MoveSelectPanel.BackColor = Color.LightYellow;
+        }
     }
 }

@@ -47,6 +47,11 @@
     <Compile Include="Commands\DeleteCommand.cs" />
     <Compile Include="Commands\EditBinaryCommand.cs" />
     <Compile Include="Commands\EditClassCommand.cs" />
+    <Compile Include="Commands\Invoker.cs" />
+    <Compile Include="Commands\MoveClassCommand.cs" />
+    <Compile Include="Commands\MoveLineCommand.cs" />
+    <Compile Include="Commands\RedoCommand.cs" />
+    <Compile Include="Commands\UndoCommand.cs" />
     <Compile Include="DrawingComponents\AggregationRelationship.cs" />
     <Compile Include="DrawingComponents\BinaryRelationship.cs" />
     <Compile Include="DrawingComponents\ClassSymbol.cs" />

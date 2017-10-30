@@ -39,15 +39,17 @@ namespace AppLayer.Commands
             }
         }
 
-        public override void Execute()
+        public override bool Execute()
         {
-            Console.WriteLine(Symbol.type);
             TargetDrawing.Add(Symbol);
+            TargetDrawing.IsDirty = true;
+            return true;
         }
 
         public override void Undo()
         {
-            throw new NotImplementedException();
+            TargetDrawing.RemoveSymbol(Symbol);
+            TargetDrawing.IsDirty = true;
         }
     }
 }

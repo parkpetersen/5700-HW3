@@ -45,6 +45,12 @@
             this.Generalization = new System.Windows.Forms.Label();
             this.DeleteToolSelectPanel = new System.Windows.Forms.Panel();
             this.Delete = new System.Windows.Forms.Label();
+            this.RedoSelectPanel = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.UndoSelectPanel = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.MoveSelectPanel = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
             this.ClassIconPanel.SuspendLayout();
             this.BinarySelectPanel.SuspendLayout();
             this.EditSelectPanel.SuspendLayout();
@@ -53,6 +59,9 @@
             this.CompositionSelectPanel.SuspendLayout();
             this.GeneralizationSelectPanel.SuspendLayout();
             this.DeleteToolSelectPanel.SuspendLayout();
+            this.RedoSelectPanel.SuspendLayout();
+            this.UndoSelectPanel.SuspendLayout();
+            this.MoveSelectPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // DrawingPanel
@@ -115,7 +124,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(36, 0);
+            this.label3.Location = new System.Drawing.Point(3, 4);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(25, 13);
             this.label3.TabIndex = 0;
@@ -210,17 +219,79 @@
             // Delete
             // 
             this.Delete.AutoSize = true;
-            this.Delete.Location = new System.Drawing.Point(4, 0);
+            this.Delete.Location = new System.Drawing.Point(3, 4);
             this.Delete.Name = "Delete";
             this.Delete.Size = new System.Drawing.Size(38, 13);
             this.Delete.TabIndex = 0;
             this.Delete.Text = "Delete";
+            // 
+            // RedoSelectPanel
+            // 
+            this.RedoSelectPanel.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.RedoSelectPanel.Controls.Add(this.label6);
+            this.RedoSelectPanel.Location = new System.Drawing.Point(647, 53);
+            this.RedoSelectPanel.Name = "RedoSelectPanel";
+            this.RedoSelectPanel.Size = new System.Drawing.Size(125, 47);
+            this.RedoSelectPanel.TabIndex = 7;
+            this.RedoSelectPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.RedoSelectPanel_MouseDown);
+            this.RedoSelectPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.RedoSelectPanel_MouseUp);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 4);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(33, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Redo";
+            // 
+            // UndoSelectPanel
+            // 
+            this.UndoSelectPanel.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.UndoSelectPanel.Controls.Add(this.label7);
+            this.UndoSelectPanel.Location = new System.Drawing.Point(493, 53);
+            this.UndoSelectPanel.Name = "UndoSelectPanel";
+            this.UndoSelectPanel.Size = new System.Drawing.Size(136, 47);
+            this.UndoSelectPanel.TabIndex = 8;
+            this.UndoSelectPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.UndoSelectPanel_MouseDown);
+            this.UndoSelectPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.UndoSelectPanel_MouseUp);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 4);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(33, 13);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Undo";
+            // 
+            // MoveSelectPanel
+            // 
+            this.MoveSelectPanel.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.MoveSelectPanel.Controls.Add(this.label8);
+            this.MoveSelectPanel.Location = new System.Drawing.Point(353, 53);
+            this.MoveSelectPanel.Name = "MoveSelectPanel";
+            this.MoveSelectPanel.Size = new System.Drawing.Size(123, 49);
+            this.MoveSelectPanel.TabIndex = 9;
+            this.MoveSelectPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MoveSelectPanel_MouseUp);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(4, 4);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(34, 13);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Move";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1078, 667);
+            this.Controls.Add(this.MoveSelectPanel);
+            this.Controls.Add(this.UndoSelectPanel);
+            this.Controls.Add(this.RedoSelectPanel);
             this.Controls.Add(this.DeleteToolSelectPanel);
             this.Controls.Add(this.GeneralizationSelectPanel);
             this.Controls.Add(this.CompositionSelectPanel);
@@ -248,6 +319,12 @@
             this.GeneralizationSelectPanel.PerformLayout();
             this.DeleteToolSelectPanel.ResumeLayout(false);
             this.DeleteToolSelectPanel.PerformLayout();
+            this.RedoSelectPanel.ResumeLayout(false);
+            this.RedoSelectPanel.PerformLayout();
+            this.UndoSelectPanel.ResumeLayout(false);
+            this.UndoSelectPanel.PerformLayout();
+            this.MoveSelectPanel.ResumeLayout(false);
+            this.MoveSelectPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -271,6 +348,12 @@
         private System.Windows.Forms.Label Dependency;
         private System.Windows.Forms.Panel DeleteToolSelectPanel;
         private System.Windows.Forms.Label Delete;
+        private System.Windows.Forms.Panel RedoSelectPanel;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel UndoSelectPanel;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel MoveSelectPanel;
+        private System.Windows.Forms.Label label8;
     }
 }
 

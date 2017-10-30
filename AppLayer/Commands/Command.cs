@@ -11,7 +11,7 @@ namespace AppLayer.Commands
     {
         public Drawing TargetDrawing { get; set; }
 
-        public abstract void Execute();
+        public abstract bool Execute();
         public abstract void Undo();
     }
 }

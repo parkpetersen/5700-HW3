@@ -41,15 +41,12 @@ namespace AppLayer.DrawingComponents
                     {
                         ClassSymbol classSymbol = symbol as ClassSymbol;
                         _ClassSymbols.Add(classSymbol);
-                        Console.WriteLine($"added {classSymbol.type}");
                         IsDirty = true;
                     }
                     else
                     {
                         Relationship relationship = symbol as Relationship;
                         _RelationShipLines.Add(relationship);
-                        Console.WriteLine($"added {relationship.type}");
-
                         IsDirty = true;
                     }
                 }
@@ -93,18 +90,10 @@ namespace AppLayer.DrawingComponents
         }
 
         public Symbol FindSymbolAtPosition(Point location)
-        { //needs work
+        {
             Symbol result = null;
-            Console.WriteLine("here");
             lock (_myLock)
             {
-                Console.WriteLine("here2");
-
-
-                // result = _ClassSymbols.FindLast(t => location.X >= t.Location.X - (t.Size.Width/2) &&
-                // location.X < t.Location.X - (t.Size.Width/2) + t.Size.Width &&
-                // location.Y >= t.Location.Y - (t.Size.Height/2) &&
-                //  location.Y < t.Location.Y - (t.Size.Height/2) + t.Size.Height);
                 foreach (var s in _ClassSymbols)
                 {
                     if (location.X >= s.Location.X - (s.Size.Width / 2) &&

@@ -17,10 +17,12 @@ namespace GuiLayer
         Color receivedColor;
         Drawing TargetDrawing;
         ClassSymbol EditedSymbol;
+        Invoker _invoker;
 
-        public EditClass(ClassSymbol Symbol, Drawing targetDrawing)
+        public EditClass(ClassSymbol Symbol, Drawing targetDrawing, Invoker invoker)
         {
             InitializeComponent();
+            _invoker = invoker;
             EditedSymbol = Symbol;
             NameTextBox.Text = Symbol.label;
             string widthText = Symbol.Size.Width.ToString();
@@ -47,7 +49,8 @@ namespace GuiLayer
             int newHeight = Convert.ToInt32(HeightTextBox1.Text);
             Size newSize = new Size(newWidth, newHeight);
             EditClassCommand command = new EditClassCommand(EditedSymbol, NameTextBox.Text, newSize, receivedColor, TargetDrawing);
-            command.Execute();
+            //command.Execute();
+            _invoker.EnqueueCommandForExecution(command);
             this.Hide();
         }
     }

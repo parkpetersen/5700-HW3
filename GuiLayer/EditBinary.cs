@@ -16,11 +16,13 @@ namespace GuiLayer
     {
         BinaryRelationship editedLine;
         Drawing TargetDrawing;
+        Invoker _invoker;
 
-        public EditBinary(BinaryRelationship line, Drawing drawing)
+        public EditBinary(BinaryRelationship line, Drawing drawing, Invoker invoker)
         {
             InitializeComponent();
             TargetDrawing = drawing;
+            _invoker = invoker;
             editedLine = line;
             LabelTextBox.Text = editedLine.label;
             
@@ -29,7 +31,8 @@ namespace GuiLayer
         private void AcceptButton_Click(object sender, EventArgs e)
         {
             EditBinaryCommand command = new EditBinaryCommand(editedLine, LabelTextBox.Text, TargetDrawing);
-            command.Execute();
+            _invoker.EnqueueCommandForExecution(command);
+            //command.Execute();
             this.Hide();
         }
     }

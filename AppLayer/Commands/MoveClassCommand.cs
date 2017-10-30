@@ -3,30 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Drawing;
 using AppLayer.DrawingComponents;
+using System.Drawing;
 
 namespace AppLayer.Commands
 {
-    public class DeleteCommand : Command
+    public class MoveClassCommand : Command
     {
-        Symbol DeletedSymbol;
+        ClassSymbol MovedSymbol;
+        Point OldLocation;
+        Point NewLocation;
 
-        public DeleteCommand(Symbol symbol, Drawing drawing)
+        public MoveClassCommand(ClassSymbol symbol, Point newLocation, Drawing drawing)
         {
             TargetDrawing = drawing;
-            DeletedSymbol = symbol;
+            MovedSymbol = symbol;
+            OldLocation = MovedSymbol.Location;
+            NewLocation = newLocation;
         }
+
         public override bool Execute()
         {
-            TargetDrawing.RemoveSymbol(DeletedSymbol);
+            MovedSymbol.MoveClass(NewLocation);
             TargetDrawing.IsDirty = true;
             return true;
         }
 
         public override void Undo()
         {
-            TargetDrawing.Add(DeletedSymbol);
+            MovedSymbol.MoveClass(OldLocation);
             TargetDrawing.IsDirty = true;
         }
     }
