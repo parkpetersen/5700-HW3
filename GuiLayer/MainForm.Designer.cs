@@ -35,16 +35,24 @@
             this.label2 = new System.Windows.Forms.Label();
             this.EditSelectPanel = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.DependencySelectPanel = new System.Windows.Forms.Panel();
+            this.Dependency = new System.Windows.Forms.Label();
             this.AggregationSelectPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.CompositionSelectPanel = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
+            this.GeneralizationSelectPanel = new System.Windows.Forms.Panel();
+            this.Generalization = new System.Windows.Forms.Label();
+            this.DeleteToolSelectPanel = new System.Windows.Forms.Panel();
+            this.Delete = new System.Windows.Forms.Label();
             this.ClassIconPanel.SuspendLayout();
             this.BinarySelectPanel.SuspendLayout();
             this.EditSelectPanel.SuspendLayout();
+            this.DependencySelectPanel.SuspendLayout();
             this.AggregationSelectPanel.SuspendLayout();
             this.CompositionSelectPanel.SuspendLayout();
+            this.GeneralizationSelectPanel.SuspendLayout();
+            this.DeleteToolSelectPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // DrawingPanel
@@ -69,7 +77,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 0);
+            this.label1.Location = new System.Drawing.Point(7, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(32, 13);
             this.label1.TabIndex = 2;
@@ -88,7 +96,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(36, 4);
+            this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 13);
             this.label2.TabIndex = 0;
@@ -98,9 +106,9 @@
             // 
             this.EditSelectPanel.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.EditSelectPanel.Controls.Add(this.label3);
-            this.EditSelectPanel.Location = new System.Drawing.Point(12, 528);
+            this.EditSelectPanel.Location = new System.Drawing.Point(940, 53);
             this.EditSelectPanel.Name = "EditSelectPanel";
-            this.EditSelectPanel.Size = new System.Drawing.Size(126, 79);
+            this.EditSelectPanel.Size = new System.Drawing.Size(126, 47);
             this.EditSelectPanel.TabIndex = 0;
             this.EditSelectPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.EditSelectPanel_MouseUp);
             // 
@@ -113,12 +121,24 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Edit";
             // 
-            // panel1
+            // DependencySelectPanel
             // 
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 100);
-            this.panel1.TabIndex = 2;
+            this.DependencySelectPanel.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.DependencySelectPanel.Controls.Add(this.Dependency);
+            this.DependencySelectPanel.Location = new System.Drawing.Point(12, 494);
+            this.DependencySelectPanel.Name = "DependencySelectPanel";
+            this.DependencySelectPanel.Size = new System.Drawing.Size(126, 71);
+            this.DependencySelectPanel.TabIndex = 2;
+            this.DependencySelectPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DependencySelectPanel_MouseUp);
+            // 
+            // Dependency
+            // 
+            this.Dependency.AutoSize = true;
+            this.Dependency.Location = new System.Drawing.Point(10, 4);
+            this.Dependency.Name = "Dependency";
+            this.Dependency.Size = new System.Drawing.Size(68, 13);
+            this.Dependency.TabIndex = 0;
+            this.Dependency.Text = "Dependency";
             // 
             // AggregationSelectPanel
             // 
@@ -126,7 +146,7 @@
             this.AggregationSelectPanel.Controls.Add(this.label4);
             this.AggregationSelectPanel.Location = new System.Drawing.Point(12, 259);
             this.AggregationSelectPanel.Name = "AggregationSelectPanel";
-            this.AggregationSelectPanel.Size = new System.Drawing.Size(126, 68);
+            this.AggregationSelectPanel.Size = new System.Drawing.Size(126, 58);
             this.AggregationSelectPanel.TabIndex = 3;
             this.AggregationSelectPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.AggregationSelectPanel_MouseUp);
             // 
@@ -143,9 +163,9 @@
             // 
             this.CompositionSelectPanel.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.CompositionSelectPanel.Controls.Add(this.label5);
-            this.CompositionSelectPanel.Location = new System.Drawing.Point(12, 342);
+            this.CompositionSelectPanel.Location = new System.Drawing.Point(12, 334);
             this.CompositionSelectPanel.Name = "CompositionSelectPanel";
-            this.CompositionSelectPanel.Size = new System.Drawing.Size(126, 74);
+            this.CompositionSelectPanel.Size = new System.Drawing.Size(126, 62);
             this.CompositionSelectPanel.TabIndex = 4;
             this.CompositionSelectPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.CompositionSelectPanel_MouseUp);
             // 
@@ -158,14 +178,54 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Composition";
             // 
+            // GeneralizationSelectPanel
+            // 
+            this.GeneralizationSelectPanel.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.GeneralizationSelectPanel.Controls.Add(this.Generalization);
+            this.GeneralizationSelectPanel.Location = new System.Drawing.Point(12, 413);
+            this.GeneralizationSelectPanel.Name = "GeneralizationSelectPanel";
+            this.GeneralizationSelectPanel.Size = new System.Drawing.Size(123, 65);
+            this.GeneralizationSelectPanel.TabIndex = 5;
+            this.GeneralizationSelectPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.GeneralizationSelectPanel_MouseUp);
+            // 
+            // Generalization
+            // 
+            this.Generalization.AutoSize = true;
+            this.Generalization.Location = new System.Drawing.Point(6, 4);
+            this.Generalization.Name = "Generalization";
+            this.Generalization.Size = new System.Drawing.Size(74, 13);
+            this.Generalization.TabIndex = 0;
+            this.Generalization.Text = "Generalization";
+            // 
+            // DeleteToolSelectPanel
+            // 
+            this.DeleteToolSelectPanel.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.DeleteToolSelectPanel.Controls.Add(this.Delete);
+            this.DeleteToolSelectPanel.Location = new System.Drawing.Point(789, 53);
+            this.DeleteToolSelectPanel.Name = "DeleteToolSelectPanel";
+            this.DeleteToolSelectPanel.Size = new System.Drawing.Size(132, 47);
+            this.DeleteToolSelectPanel.TabIndex = 6;
+            this.DeleteToolSelectPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DeleteToolSelectPanel_MouseUp);
+            // 
+            // Delete
+            // 
+            this.Delete.AutoSize = true;
+            this.Delete.Location = new System.Drawing.Point(4, 0);
+            this.Delete.Name = "Delete";
+            this.Delete.Size = new System.Drawing.Size(38, 13);
+            this.Delete.TabIndex = 0;
+            this.Delete.Text = "Delete";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1078, 667);
+            this.Controls.Add(this.DeleteToolSelectPanel);
+            this.Controls.Add(this.GeneralizationSelectPanel);
             this.Controls.Add(this.CompositionSelectPanel);
             this.Controls.Add(this.AggregationSelectPanel);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.DependencySelectPanel);
             this.Controls.Add(this.EditSelectPanel);
             this.Controls.Add(this.BinarySelectPanel);
             this.Controls.Add(this.ClassIconPanel);
@@ -178,10 +238,16 @@
             this.BinarySelectPanel.PerformLayout();
             this.EditSelectPanel.ResumeLayout(false);
             this.EditSelectPanel.PerformLayout();
+            this.DependencySelectPanel.ResumeLayout(false);
+            this.DependencySelectPanel.PerformLayout();
             this.AggregationSelectPanel.ResumeLayout(false);
             this.AggregationSelectPanel.PerformLayout();
             this.CompositionSelectPanel.ResumeLayout(false);
             this.CompositionSelectPanel.PerformLayout();
+            this.GeneralizationSelectPanel.ResumeLayout(false);
+            this.GeneralizationSelectPanel.PerformLayout();
+            this.DeleteToolSelectPanel.ResumeLayout(false);
+            this.DeleteToolSelectPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -195,11 +261,16 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel EditSelectPanel;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel DependencySelectPanel;
         private System.Windows.Forms.FlowLayoutPanel AggregationSelectPanel;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel CompositionSelectPanel;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel GeneralizationSelectPanel;
+        private System.Windows.Forms.Label Generalization;
+        private System.Windows.Forms.Label Dependency;
+        private System.Windows.Forms.Panel DeleteToolSelectPanel;
+        private System.Windows.Forms.Label Delete;
     }
 }
 

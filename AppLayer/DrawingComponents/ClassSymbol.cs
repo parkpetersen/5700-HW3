@@ -19,7 +19,7 @@ namespace AppLayer.DrawingComponents
             this.Location = location;
             this.Size = size;
             this.label = "Class";
-            this.ClassColor = Color.BlueViolet;
+            this.ClassColor = Color.LightBlue;
         }
 
         public void EditClass(string name, Size size, Color color)

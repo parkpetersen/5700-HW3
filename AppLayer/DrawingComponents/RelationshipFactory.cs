@@ -35,15 +35,25 @@ namespace AppLayer.DrawingComponents
             }
             else if(type == "Aggregation")
             {
-                Symbol symbol = drawing.FindSymbolAtPosition(location1);
+                Symbol symbol = drawing.FindSymbolAtPosition(location1); //get the class symbol that is has the diamond on it.
                 ClassSymbol classSymbol = symbol as ClassSymbol;
                 return new AggregationRelationship(location1, location2, classSymbol);
             }
             else if(type == "Composition")
             {
-                Symbol symbol = drawing.FindSymbolAtPosition(location1);
+                Symbol symbol = drawing.FindSymbolAtPosition(location1); //get the class symbol that is has the diamond on it.
                 ClassSymbol classSymbol = symbol as ClassSymbol;
                 return new CompositionRelationship(location1, location2, classSymbol);
+            }
+            else if(type == "Generalization")
+            {
+                Symbol symbol = drawing.FindSymbolAtPosition(location1); //get the class symbol that is has the triangle on it.
+                ClassSymbol classSymbol = symbol as ClassSymbol;
+                return new GeneralizationRelationship(location1, location2, classSymbol);
+            }
+            else if(type == "Dependency")
+            {
+                return new DependencyRelationship(location1, location2);
             }
             else
             {

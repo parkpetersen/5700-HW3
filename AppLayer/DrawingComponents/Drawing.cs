@@ -12,8 +12,8 @@ namespace AppLayer.DrawingComponents
 {
     public class Drawing
     {
-        private List<ClassSymbol> _ClassSymbols = new List<ClassSymbol>();
-        private List<Relationship> _RelationShipLines = new List<Relationship>();
+        public List<ClassSymbol> _ClassSymbols = new List<ClassSymbol>();
+        public List<Relationship> _RelationShipLines = new List<Relationship>();
         public Symbol SelectedSymbol { get; set; }
         public bool IsDirty { get; set; }
 
@@ -122,6 +122,20 @@ namespace AppLayer.DrawingComponents
 
             }
             return result;
+        }
+
+        public void DeleteConnectedLines(ClassSymbol classSymbol)
+        {
+            lock (_myLock)
+            {
+                for(int i = 0; i < _RelationShipLines.Count; i++)
+                {
+                    if (_RelationShipLines[i].Location1 == classSymbol.Location || _RelationShipLines[i].Location2 == classSymbol.Location)
+                    {
+                        RemoveSymbol(_RelationShipLines[i]);
+                    }
+                }
+            }
         }
 
         public void DeselectAll()

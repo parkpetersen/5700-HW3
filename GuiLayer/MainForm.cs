@@ -31,6 +31,7 @@ namespace GuiLayer
             timer.Interval = (1000);
             timer.Tick += new EventHandler(timer_tick);
             timer.Start();
+            ResetColors();
             DrawToolIcons();
             
 
@@ -60,7 +61,7 @@ namespace GuiLayer
             }
             else
             {
-                if (_SelectedTool == "Binary" || _SelectedTool == "Aggregation" || _SelectedTool == "Composition")
+                if (_SelectedTool == "Binary" || _SelectedTool == "Aggregation" || _SelectedTool == "Composition" || _SelectedTool == "Generalization" || _SelectedTool == "Dependency")
                 {
                     if (connected1 == null)
                     {
@@ -92,7 +93,11 @@ namespace GuiLayer
                 else if(_SelectedTool == "Edit")
                 {
                     Symbol foundSymbol = TargetDrawing.FindSymbolAtPosition(e.Location);
-                    if (foundSymbol.type == "Class")
+                    if (foundSymbol == null)
+                    {
+
+                    }
+                    else if (foundSymbol.type == "Class")
                     {
                         ClassSymbol foundClass = foundSymbol as ClassSymbol;
                         EditClass editClassWindow = new EditClass(foundClass, TargetDrawing);
@@ -104,6 +109,28 @@ namespace GuiLayer
                         EditBinary editBinaryWindow = new EditBinary(foundBinary, TargetDrawing);
                         editBinaryWindow.Show();
 
+                    }
+                }
+                else if(_SelectedTool == "Delete")
+                {
+                    Symbol foundSymbol = TargetDrawing.FindSymbolAtPosition(e.Location);
+                    if(foundSymbol == null)
+                    {
+
+                    }
+                    else if(foundSymbol.type == "Class")
+                    {
+                        ClassSymbol classSymbol = foundSymbol as ClassSymbol;
+                        for(int i = 0; i < TargetDrawing._RelationShipLines.Count; i++)
+                        {
+                            if(TargetDrawing._RelationShipLines[i].Location1 == classSymbol.Location || TargetDrawing._RelationShipLines[i].Location2 == classSymbol.Location)
+                            {
+                                DeleteCommand deleteLineCommand = new DeleteCommand(TargetDrawing._RelationShipLines[i], TargetDrawing);
+                                deleteLineCommand.Execute();
+                            }
+                        }
+                        DeleteCommand command = new DeleteCommand(classSymbol, TargetDrawing);
+                        command.Execute();
                     }
                 }
             }
@@ -124,27 +151,72 @@ namespace GuiLayer
 
         private void ClassIconPanel_MouseUp(object sender, MouseEventArgs e)
         {
+            ResetColors();
             _SelectedTool = "Class";
+            ClassIconPanel.BackColor = Color.LightYellow;
         }
 
         private void BinarySelectPanel_MouseUp(object sender, MouseEventArgs e)
         {
+            ResetColors();
             _SelectedTool = "Binary";
+            BinarySelectPanel.BackColor = Color.LightYellow;
         }
 
         private void EditSelectPanel_MouseUp(object sender, MouseEventArgs e)
         {
+            ResetColors();
             _SelectedTool = "Edit";
+            EditSelectPanel.BackColor = Color.LightYellow;
         }
 
         private void AggregationSelectPanel_MouseUp(object sender, MouseEventArgs e)
         {
+            ResetColors();
             _SelectedTool = "Aggregation";
+            AggregationSelectPanel.BackColor = Color.LightYellow;
         }
 
         private void CompositionSelectPanel_MouseUp(object sender, MouseEventArgs e)
         {
+            ResetColors();
             _SelectedTool = "Composition";
+            CompositionSelectPanel.BackColor = Color.LightYellow;
         }
+
+        private void GeneralizationSelectPanel_MouseUp(object sender, MouseEventArgs e)
+        {
+            ResetColors();
+            _SelectedTool = "Generalization";
+            GeneralizationSelectPanel.BackColor = Color.LightYellow;
+        }
+
+        private void DependencySelectPanel_MouseUp(object sender, MouseEventArgs e)
+        {
+            ResetColors();
+            _SelectedTool = "Dependency";
+            DependencySelectPanel.BackColor = Color.LightYellow;
+        }
+
+        private void DeleteToolSelectPanel_MouseUp(object sender, MouseEventArgs e)
+        {
+            ResetColors();
+            _SelectedTool = "Delete";
+            DeleteToolSelectPanel.BackColor = Color.LightYellow;
+        }
+
+        private void ResetColors()
+        {
+            ClassIconPanel.BackColor = Color.LightBlue;
+            BinarySelectPanel.BackColor = Color.LightBlue;
+            EditSelectPanel.BackColor = Color.LightBlue;
+            AggregationSelectPanel.BackColor = Color.LightBlue;
+            CompositionSelectPanel.BackColor = Color.LightBlue;
+            GeneralizationSelectPanel.BackColor = Color.LightBlue;
+            DependencySelectPanel.BackColor = Color.LightBlue;
+            DeleteToolSelectPanel.BackColor = Color.LightBlue;
+        }
+
+      
     }
 }
