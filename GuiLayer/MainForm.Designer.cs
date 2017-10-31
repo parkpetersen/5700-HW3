@@ -51,6 +51,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.MoveSelectPanel = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
+            this.SaveSelectPanel = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.OpenSelectPanel = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
             this.ClassIconPanel.SuspendLayout();
             this.BinarySelectPanel.SuspendLayout();
             this.EditSelectPanel.SuspendLayout();
@@ -62,6 +66,8 @@
             this.RedoSelectPanel.SuspendLayout();
             this.UndoSelectPanel.SuspendLayout();
             this.MoveSelectPanel.SuspendLayout();
+            this.SaveSelectPanel.SuspendLayout();
+            this.OpenSelectPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // DrawingPanel
@@ -284,11 +290,53 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Move";
             // 
+            // SaveSelectPanel
+            // 
+            this.SaveSelectPanel.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.SaveSelectPanel.Controls.Add(this.label9);
+            this.SaveSelectPanel.Location = new System.Drawing.Point(144, 53);
+            this.SaveSelectPanel.Name = "SaveSelectPanel";
+            this.SaveSelectPanel.Size = new System.Drawing.Size(84, 47);
+            this.SaveSelectPanel.TabIndex = 10;
+            this.SaveSelectPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SaveSelectPanel_MouseDown);
+            this.SaveSelectPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.SaveSelectPanel_MouseUp);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(3, 4);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(32, 13);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Save";
+            // 
+            // OpenSelectPanel
+            // 
+            this.OpenSelectPanel.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.OpenSelectPanel.Controls.Add(this.label10);
+            this.OpenSelectPanel.Location = new System.Drawing.Point(234, 53);
+            this.OpenSelectPanel.Name = "OpenSelectPanel";
+            this.OpenSelectPanel.Size = new System.Drawing.Size(91, 47);
+            this.OpenSelectPanel.TabIndex = 11;
+            this.OpenSelectPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OpenSelectPanel_MouseDown);
+            this.OpenSelectPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OpenSelectPanel_MouseUp);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(4, 4);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(33, 13);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Open";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1078, 667);
+            this.Controls.Add(this.OpenSelectPanel);
+            this.Controls.Add(this.SaveSelectPanel);
             this.Controls.Add(this.MoveSelectPanel);
             this.Controls.Add(this.UndoSelectPanel);
             this.Controls.Add(this.RedoSelectPanel);
@@ -325,6 +373,10 @@
             this.UndoSelectPanel.PerformLayout();
             this.MoveSelectPanel.ResumeLayout(false);
             this.MoveSelectPanel.PerformLayout();
+            this.SaveSelectPanel.ResumeLayout(false);
+            this.SaveSelectPanel.PerformLayout();
+            this.OpenSelectPanel.ResumeLayout(false);
+            this.OpenSelectPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -354,6 +406,10 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel MoveSelectPanel;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Panel SaveSelectPanel;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Panel OpenSelectPanel;
+        private System.Windows.Forms.Label label10;
     }
 }
 

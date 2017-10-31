@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
+﻿using System.Drawing;
+using System.Runtime.Serialization;
 
 namespace AppLayer.DrawingComponents
 {
+    [DataContract]
     public class ClassSymbol : Symbol
     {
+        [DataMember]
         public virtual Point Location { get; set; } = new Point(0, 0);
+        [DataMember]
         public virtual Size Size { get; set; } = new Size(0, 0);
+        [DataMember]
         public Color ClassColor;
 
         public ClassSymbol(Point location, Size size)

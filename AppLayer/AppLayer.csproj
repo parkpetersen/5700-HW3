@@ -50,7 +50,9 @@
     <Compile Include="Commands\Invoker.cs" />
     <Compile Include="Commands\MoveClassCommand.cs" />
     <Compile Include="Commands\MoveLineCommand.cs" />
+    <Compile Include="Commands\OpenCommand.cs" />
     <Compile Include="Commands\RedoCommand.cs" />
+    <Compile Include="Commands\SaveCommand.cs" />
     <Compile Include="Commands\UndoCommand.cs" />
     <Compile Include="DrawingComponents\AggregationRelationship.cs" />
     <Compile Include="DrawingComponents\BinaryRelationship.cs" />

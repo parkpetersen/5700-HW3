@@ -257,6 +257,8 @@ namespace GuiLayer
             UndoSelectPanel.BackColor = Color.LightBlue;
             RedoSelectPanel.BackColor = Color.LightBlue;
             MoveSelectPanel.BackColor = Color.LightBlue;
+            SaveSelectPanel.BackColor = Color.LightBlue;
+            OpenSelectPanel.BackColor = Color.LightBlue;
         }
 
         private void UndoSelectPanel_MouseUp(object sender, MouseEventArgs e)
@@ -286,6 +288,52 @@ namespace GuiLayer
             ResetColors();
             _SelectedTool = "Move";
             MoveSelectPanel.BackColor = Color.LightYellow;
+        }
+
+        private void SaveSelectPanel_MouseUp(object sender, MouseEventArgs e)
+        {
+            ResetColors();
+            var dialog = new SaveFileDialog
+            {
+                DefaultExt = "json",
+                RestoreDirectory = true,
+                Filter = @"JSON files (*.json)|*.json|All files (*.*)|*.*"
+            };
+            if(dialog.ShowDialog() == DialogResult.OK)
+            {
+                SaveCommand command = new SaveCommand(dialog.FileName);
+                command.TargetDrawing = TargetDrawing;
+                _invoker.EnqueueCommandForExecution(command);
+            }
+        }
+
+        private void SaveSelectPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            SaveSelectPanel.BackColor = Color.LightYellow;
+        }
+
+        private void OpenSelectPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            OpenSelectPanel.BackColor = Color.LightYellow;
+        }
+
+        private void OpenSelectPanel_MouseUp(object sender, MouseEventArgs e)
+        {
+            var dialog = new OpenFileDialog
+            {
+                CheckFileExists = true,
+                DefaultExt = "json",
+                Multiselect = false,
+                RestoreDirectory = true,
+                Filter = @"JSON files (*.json)|*.json|All files (*.*)|*.*"
+            };
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                OpenCommand command = new OpenCommand(TargetDrawing, dialog.FileName);
+                command.TargetDrawing = TargetDrawing;
+                _invoker.EnqueueCommandForExecution(command);
+            }
         }
     }
 }

@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AppLayer.DrawingComponents;
 using System.Drawing;
+using System.Runtime.Serialization;
 
 namespace AppLayer.DrawingComponents
 {
-
+    [DataContract]
     public class GeneralizationRelationship : Relationship
     {
+        [DataMember]
         ClassSymbol Location1Class;
         public GeneralizationRelationship(Point location1, Point location2, ClassSymbol startingClass)
         {

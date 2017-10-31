@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
+﻿using System.Drawing;
+using System.Runtime.Serialization;
 
 namespace AppLayer.DrawingComponents
 {
+    [DataContract]
     public class DependencyRelationship : Relationship
     {
         public DependencyRelationship(Point location1, Point location2)

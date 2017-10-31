@@ -6,18 +6,31 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.IO;
 using System.Runtime.Serialization.Json;
+using System.Runtime.Serialization;
 
 
 namespace AppLayer.DrawingComponents
 {
+    [DataContract]
+    [KnownType(typeof(AggregationRelationship))]
+    [KnownType(typeof(BinaryRelationship))]
+    [KnownType(typeof(CompositionRelationship))]
+    [KnownType(typeof(DependencyRelationship))]
+    [KnownType(typeof(GeneralizationRelationship))]
+    [KnownType(typeof(AggregationRelationship))]
     public class Drawing
     {
+        [DataMember]
         public List<ClassSymbol> _ClassSymbols = new List<ClassSymbol>();
+        [DataMember]
         public List<Relationship> _RelationShipLines = new List<Relationship>();
         public Symbol SelectedSymbol { get; set; }
         public bool IsDirty { get; set; }
 
         private readonly object _myLock = new object();
+
+        private static readonly DataContractJsonSerializer JsonSerializer =
+            new DataContractJsonSerializer(typeof(Drawing));
 
 
 
@@ -186,12 +199,38 @@ namespace AppLayer.DrawingComponents
 
         public void LoadFromStream(Stream stream)
         {
+            _ClassSymbols.Clear();
+            _RelationShipLines.Clear();
+            var loadedSymbols = JsonSerializer.ReadObject(stream) as Drawing;
+            //if (loadedSymbols == null || loadedSymbols.Count == 0) return;
 
+            lock (_myLock)
+            {
+                /**
+                foreach (var symbol in loadedSymbols)
+                {
+
+                    _ClassSymbols.Add(symbol as ClassSymbol);
+                }
+                **/
+                this._ClassSymbols = loadedSymbols._ClassSymbols;
+                this._RelationShipLines = loadedSymbols._RelationShipLines;
+                IsDirty = true;
+            }
         }
 
         public void SaveToStream(Stream stream)
         {
-
+            lock (_myLock)
+            {
+                JsonSerializer.WriteObject(stream, this);
+                /**
+                foreach (ClassSymbol symbol in _ClassSymbols)
+                {
+                    JsonSerializer.WriteObject(stream, symbol);
+                }
+    **/
+            }
         }
     }
 }

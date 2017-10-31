@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace AppLayer.DrawingComponents
 {
+    [DataContract]
     public class BinaryRelationship : Relationship
     {
         public BinaryRelationship(Point location1, Point location2)
