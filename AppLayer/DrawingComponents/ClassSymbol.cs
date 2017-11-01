@@ -12,21 +12,24 @@ namespace AppLayer.DrawingComponents
         public virtual Size Size { get; set; } = new Size(0, 0);
         [DataMember]
         public Color ClassColor;
+        [DataMember]
+        public Color ForegroundColor;
 
-        public ClassSymbol(Point location, Size size)
+        public ClassSymbol(Point location, Size size, Color bgcolor, Color fgColor)
         {
             
             this.Location = location;
             this.Size = size;
             this.label = "Class";
-            this.ClassColor = Color.LightBlue;
+            this.ClassColor = bgcolor;
+            this.ForegroundColor = fgColor;
         }
 
-        public void EditClass(string name, Size size, Color color)
+        public void EditClass(string name, Size size, Color bgcolor)
         {
             this.label = name;
             this.Size = size;
-            this.ClassColor = color;
+            this.ClassColor = bgcolor;
         }
 
         public void MoveClass(Point newLocation)
@@ -36,7 +39,7 @@ namespace AppLayer.DrawingComponents
 
         public override void Draw(Graphics graphics)
         {
-            Pen pen = new Pen(Color.Black);
+            Pen pen = new Pen(ForegroundColor);
             SolidBrush brush = new SolidBrush(ClassColor);
             int x = Location.X - (Size.Width / 2);
             int y = Location.Y - (Size.Height / 2);
@@ -47,7 +50,8 @@ namespace AppLayer.DrawingComponents
 
             graphics.DrawRectangle(pen, rect);
             graphics.FillRectangle(brush, rect);
-            graphics.DrawString(this.label, font, Brushes.Black, rect);
+            brush.Color = ForegroundColor;
+            graphics.DrawString(this.label, font, brush, rect);
 
             pen.Dispose();
             brush.Dispose();

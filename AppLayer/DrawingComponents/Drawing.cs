@@ -24,6 +24,14 @@ namespace AppLayer.DrawingComponents
         public List<ClassSymbol> _ClassSymbols = new List<ClassSymbol>();
         [DataMember]
         public List<Relationship> _RelationShipLines = new List<Relationship>();
+        [DataMember]
+        public string DrawingName { get; set; } = "New Drawing";
+        [DataMember]
+        public Color BackGroundColor { get; set; } = Color.White;
+        [DataMember]
+        public Color ForeGroundColor { get; set; } = Color.Black;
+        [DataMember]
+        public Color DefaultClassColor { get; set; } = Color.LightBlue;
         public Symbol SelectedSymbol { get; set; }
         public bool IsDirty { get; set; }
 
@@ -119,7 +127,13 @@ namespace AppLayer.DrawingComponents
                 }
                 foreach(var l in _RelationShipLines)
                 {
-                    //find a line
+                    if(location.X >= ((l.Location2.X + l.Location1.X) / 2) - 10 &&
+                        location.X < ((l.Location2.X + l.Location1.X) / 2) + 10 &&
+                        location.Y >= ((l.Location2.Y + l.Location1.Y) / 2) - 10 &&
+                        location.Y < ((l.Location2.Y + l.Location1.Y) / 2) + 10)
+                    {
+                        result = l;
+                    } 
                 }
 
             }
@@ -179,11 +193,10 @@ namespace AppLayer.DrawingComponents
             {
                 if (IsDirty)
                 {
-                    graphics.Clear(Color.White);
+                    graphics.Clear(BackGroundColor);
                     foreach (var s in _RelationShipLines)  //draw lines first
                     {
                         s.Draw(graphics);
-                        Console.WriteLine(s.type);
                     }
                     foreach (var s in _ClassSymbols)
                     {
@@ -202,17 +215,9 @@ namespace AppLayer.DrawingComponents
             _ClassSymbols.Clear();
             _RelationShipLines.Clear();
             var loadedSymbols = JsonSerializer.ReadObject(stream) as Drawing;
-            //if (loadedSymbols == null || loadedSymbols.Count == 0) return;
 
             lock (_myLock)
             {
-                /**
-                foreach (var symbol in loadedSymbols)
-                {
-
-                    _ClassSymbols.Add(symbol as ClassSymbol);
-                }
-                **/
                 this._ClassSymbols = loadedSymbols._ClassSymbols;
                 this._RelationShipLines = loadedSymbols._RelationShipLines;
                 IsDirty = true;
@@ -224,13 +229,15 @@ namespace AppLayer.DrawingComponents
             lock (_myLock)
             {
                 JsonSerializer.WriteObject(stream, this);
-                /**
-                foreach (ClassSymbol symbol in _ClassSymbols)
-                {
-                    JsonSerializer.WriteObject(stream, symbol);
-                }
-    **/
             }
+        }
+
+        public void EditDiagramOptions(string newName, Color newBackgroundColor, Color newForegroundColor, Color newClassColor)
+        {
+            DrawingName = newName;
+            BackGroundColor = newBackgroundColor;
+            ForeGroundColor = newForegroundColor;
+            DefaultClassColor = newClassColor;
         }
     }
 }

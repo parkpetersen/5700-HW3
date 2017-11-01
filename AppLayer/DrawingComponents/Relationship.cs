@@ -10,6 +10,8 @@ namespace AppLayer.DrawingComponents
         public virtual Point Location1 { get; set; } = new Point(0, 0);
         [DataMember]
         public virtual Point Location2 { get; set; } = new Point(0, 0);
+        [DataMember]
+        public virtual Color LineColor { get; set; } = Color.Black;
 
         public void MoveLine(Point oldLocation, Point newLocation)
         {

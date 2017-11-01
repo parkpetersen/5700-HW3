@@ -49,7 +49,6 @@ namespace GuiLayer
             int newHeight = Convert.ToInt32(HeightTextBox1.Text);
             Size newSize = new Size(newWidth, newHeight);
             EditClassCommand command = new EditClassCommand(EditedSymbol, NameTextBox.Text, newSize, receivedColor, TargetDrawing);
-            //command.Execute();
             _invoker.EnqueueCommandForExecution(command);
             this.Hide();
         }

@@ -55,6 +55,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.OpenSelectPanel = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
+            this.DiagramNameLabel = new System.Windows.Forms.Label();
+            this.OptionsSelectPanel = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
             this.ClassIconPanel.SuspendLayout();
             this.BinarySelectPanel.SuspendLayout();
             this.EditSelectPanel.SuspendLayout();
@@ -68,6 +71,7 @@
             this.MoveSelectPanel.SuspendLayout();
             this.SaveSelectPanel.SuspendLayout();
             this.OpenSelectPanel.SuspendLayout();
+            this.OptionsSelectPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // DrawingPanel
@@ -330,11 +334,42 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "Open";
             // 
+            // DiagramNameLabel
+            // 
+            this.DiagramNameLabel.AutoSize = true;
+            this.DiagramNameLabel.Location = new System.Drawing.Point(137, 13);
+            this.DiagramNameLabel.Name = "DiagramNameLabel";
+            this.DiagramNameLabel.Size = new System.Drawing.Size(80, 13);
+            this.DiagramNameLabel.TabIndex = 12;
+            this.DiagramNameLabel.Text = "Diagram Name:";
+            // 
+            // OptionsSelectPanel
+            // 
+            this.OptionsSelectPanel.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.OptionsSelectPanel.Controls.Add(this.label11);
+            this.OptionsSelectPanel.Location = new System.Drawing.Point(940, 12);
+            this.OptionsSelectPanel.Name = "OptionsSelectPanel";
+            this.OptionsSelectPanel.Size = new System.Drawing.Size(126, 35);
+            this.OptionsSelectPanel.TabIndex = 13;
+            this.OptionsSelectPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OptionsSelectPanel_MouseDown);
+            this.OptionsSelectPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OptionsSelectPanel_MouseUp);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(3, 1);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(43, 13);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Options";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1078, 667);
+            this.Controls.Add(this.OptionsSelectPanel);
+            this.Controls.Add(this.DiagramNameLabel);
             this.Controls.Add(this.OpenSelectPanel);
             this.Controls.Add(this.SaveSelectPanel);
             this.Controls.Add(this.MoveSelectPanel);
@@ -377,7 +412,10 @@
             this.SaveSelectPanel.PerformLayout();
             this.OpenSelectPanel.ResumeLayout(false);
             this.OpenSelectPanel.PerformLayout();
+            this.OptionsSelectPanel.ResumeLayout(false);
+            this.OptionsSelectPanel.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -410,6 +448,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel OpenSelectPanel;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label DiagramNameLabel;
+        private System.Windows.Forms.Panel OptionsSelectPanel;
+        private System.Windows.Forms.Label label11;
     }
 }
 

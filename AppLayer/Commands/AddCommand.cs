@@ -25,7 +25,7 @@ namespace AppLayer.Commands
             if (symbolType == "Class")
             {
                 Location1 = location1;
-                this.Symbol = new ClassSymbol(Location1, new Size(80, 80));
+                this.Symbol = new ClassSymbol(Location1, new Size(80, 80), TargetDrawing.DefaultClassColor, TargetDrawing.ForeGroundColor);
                 this.Symbol.type = "Class";
             }
             else

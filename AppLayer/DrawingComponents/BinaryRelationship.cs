@@ -7,17 +7,23 @@ namespace AppLayer.DrawingComponents
     [DataContract]
     public class BinaryRelationship : Relationship
     {
-        public BinaryRelationship(Point location1, Point location2)
+        [DataMember]
+        public int directionSwap { get; set; } = 1;
+        [DataMember]
+        public Color ArrowColor { get; set; } = Color.Black;
+
+        public BinaryRelationship(Point location1, Point location2, Color lineColor)
         {
             this.Location1 = location1;
             this.Location2 = location2;
             this.label = "Binary Relationship";
+            this.LineColor = lineColor;
         }
 
         public override void Draw(Graphics graphics)
         {
             Console.WriteLine($"Drawing from {Location1} to {Location2}");
-            Pen pen = new Pen(Color.Black);
+            Pen pen = new Pen(LineColor);
             pen.Width = 1;
             graphics.DrawLine(pen, Location1, Location2);
             Font font = new Font("Arial", 8, FontStyle.Regular, GraphicsUnit.Point);
@@ -29,7 +35,7 @@ namespace AppLayer.DrawingComponents
             //work on forming triangle to represent an arrow
             Point p1 = new Point(midpoint.X, midpoint.Y - 10);
             Point p2 = new Point(midpoint.X, midpoint.Y + 10);
-            Point p3 = new Point(midpoint.X + 10 * ((Location2.X - midpoint.X) / Math.Abs(Location2.X - midpoint.X)), midpoint.Y);
+            Point p3 = new Point(midpoint.X + 10 * ((Location2.X - midpoint.X) / Math.Abs(Location2.X - midpoint.X)) * directionSwap, midpoint.Y);
             Point[] Points = new Point[]
             {
                 p1,
@@ -40,13 +46,17 @@ namespace AppLayer.DrawingComponents
             //graphics.DrawLine(pen, p2, p3);
             //graphics.DrawLine(pen, p3, p1);
             graphics.DrawPolygon(pen, Points);
-            graphics.FillPolygon(Brushes.Black, Points);
+            Brush brush = new SolidBrush(ArrowColor);
+            graphics.FillPolygon(brush, Points);
             pen.Dispose();
         }
 
-        public void EditBinary(string newLabel)
+        public void EditBinary(string newLabel, Color newColor, int directionSwap, Color newArrowColor)
         {
             this.label = newLabel;
+            this.LineColor = newColor;
+            this.directionSwap = directionSwap;
+            this.ArrowColor = newArrowColor;
         }
     }
 }

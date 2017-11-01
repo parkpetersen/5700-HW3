@@ -10,17 +10,18 @@ namespace AppLayer.DrawingComponents
         [DataMember]
         ClassSymbol Location1Class;
 
-        public AggregationRelationship(Point location1, Point location2, ClassSymbol startingClass)
+        public AggregationRelationship(Point location1, Point location2, ClassSymbol startingClass, Color lineColor)
         {
             this.Location1 = location1;
             this.Location2 = location2;
             this.Location1Class = startingClass;
+            this.LineColor = lineColor;
 
         }
 
         public override void Draw(Graphics graphics)
         {
-            Pen pen = new Pen(Color.Black);
+            Pen pen = new Pen(LineColor);
             pen.Width = 1;
             Point midpoint = new Point((Location1.X + Location2.X) / 2, (Location1.Y + Location2.Y) / 2);
             int xDirection = ((midpoint.X - Location1.X) / Math.Abs(midpoint.X - Location1.X));

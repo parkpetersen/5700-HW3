@@ -18,7 +18,6 @@ namespace GuiLayer
         private Bitmap _imageBuffer;
         private Graphics _imageBufferGraphics;
         private Graphics _panelGraphics;
-
         private string _SelectedTool;
         public ClassSymbol selected1 = null;
         public ClassSymbol selected2 = null;
@@ -35,9 +34,8 @@ namespace GuiLayer
             timer.Tick += new EventHandler(timer_tick);
             timer.Start();
             ResetColors();
-            DrawToolIcons();
+            //makeTools();
             moveToLocation = defaultLocation;
-
             _invoker.Start();
 
         }
@@ -47,12 +45,8 @@ namespace GuiLayer
             if (TargetDrawing.IsDirty)
             {
                 DisplayDrawing();
+                DiagramNameLabel.Text = TargetDrawing.DrawingName;
             }
-        }
-
-        private void DrawToolIcons()
-        {
-
         }
 
         private void DrawingPanel_MouseUp(object sender, MouseEventArgs e)
@@ -112,6 +106,10 @@ namespace GuiLayer
                         BinaryRelationship foundBinary = foundSymbol as BinaryRelationship;
                         EditBinary editBinaryWindow = new EditBinary(foundBinary, TargetDrawing, _invoker);
                         editBinaryWindow.Show();
+
+                    }
+                    else
+                    {
 
                     }
                 }
@@ -174,6 +172,34 @@ namespace GuiLayer
                 }
             }
         }
+
+        /**
+        private void makeTools()
+        {
+            DrawToolIcons(ClassIconPanel, "Class");
+        }
+
+        private void DrawToolIcons(Panel panel, string type)
+        {
+            Pen pen = new Pen(Color.Black);
+            Brush brush = new SolidBrush(Color.Purple);
+            if(_selectionBuffer == null)
+            {
+                _selectionBuffer = new Bitmap(panel.Width, panel.Height);
+                _selectionBufferGraphics = Graphics.FromImage(_selectionBuffer);
+                _selectionGraphics = panel.CreateGraphics();
+            }
+            if(type == "Class")
+            {
+                Point location = new Point(0, 0);
+                Size size = new Size(20, 20);
+                Rectangle rect = new Rectangle(location, size);
+                _selectionGraphics.DrawRectangle(pen, rect);
+                _selectionGraphics.FillRectangle(brush, rect);
+            }
+            
+        }
+    **/
 
         private void DisplayDrawing()
         {
@@ -259,6 +285,7 @@ namespace GuiLayer
             MoveSelectPanel.BackColor = Color.LightBlue;
             SaveSelectPanel.BackColor = Color.LightBlue;
             OpenSelectPanel.BackColor = Color.LightBlue;
+            OptionsSelectPanel.BackColor = Color.LightBlue;
         }
 
         private void UndoSelectPanel_MouseUp(object sender, MouseEventArgs e)
@@ -334,6 +361,18 @@ namespace GuiLayer
                 command.TargetDrawing = TargetDrawing;
                 _invoker.EnqueueCommandForExecution(command);
             }
+        }
+
+        private void OptionsSelectPanel_MouseUp(object sender, MouseEventArgs e)
+        {
+            ResetColors();
+            EditDiagram editDiagramWindow = new EditDiagram(TargetDrawing, _invoker);
+            editDiagramWindow.Show();
+        }
+
+        private void OptionsSelectPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            OptionsSelectPanel.BackColor = Color.LightYellow;
         }
     }
 }

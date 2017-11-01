@@ -31,29 +31,29 @@ namespace AppLayer.DrawingComponents
         {
             if(type == "Binary")
             {
-                return new BinaryRelationship(location1, location2);
+                return new BinaryRelationship(location1, location2, drawing.ForeGroundColor);
             }
             else if(type == "Aggregation")
             {
                 Symbol symbol = drawing.FindSymbolAtPosition(location1); //get the class symbol that is has the diamond on it.
                 ClassSymbol classSymbol = symbol as ClassSymbol;
-                return new AggregationRelationship(location1, location2, classSymbol);
+                return new AggregationRelationship(location1, location2, classSymbol, drawing.ForeGroundColor);
             }
             else if(type == "Composition")
             {
                 Symbol symbol = drawing.FindSymbolAtPosition(location1); //get the class symbol that is has the diamond on it.
                 ClassSymbol classSymbol = symbol as ClassSymbol;
-                return new CompositionRelationship(location1, location2, classSymbol);
+                return new CompositionRelationship(location1, location2, classSymbol, drawing.ForeGroundColor);
             }
             else if(type == "Generalization")
             {
                 Symbol symbol = drawing.FindSymbolAtPosition(location1); //get the class symbol that is has the triangle on it.
                 ClassSymbol classSymbol = symbol as ClassSymbol;
-                return new GeneralizationRelationship(location1, location2, classSymbol);
+                return new GeneralizationRelationship(location1, location2, classSymbol, drawing.ForeGroundColor);
             }
             else if(type == "Dependency")
             {
-                return new DependencyRelationship(location1, location2);
+                return new DependencyRelationship(location1, location2, drawing.ForeGroundColor);
             }
             else
             {

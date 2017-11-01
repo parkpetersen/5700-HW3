@@ -31,6 +31,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.LabelTextBox = new System.Windows.Forms.TextBox();
             this.AcceptButton = new System.Windows.Forms.Button();
+            this.LineColorDialog = new System.Windows.Forms.ColorDialog();
+            this.ArrowColorDialog = new System.Windows.Forms.ColorDialog();
+            this.LineColorButton = new System.Windows.Forms.Button();
+            this.ArrowColorButton = new System.Windows.Forms.Button();
+            this.DirectionCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -59,11 +64,44 @@
             this.AcceptButton.UseVisualStyleBackColor = true;
             this.AcceptButton.Click += new System.EventHandler(this.AcceptButton_Click);
             // 
+            // LineColorButton
+            // 
+            this.LineColorButton.Location = new System.Drawing.Point(13, 75);
+            this.LineColorButton.Name = "LineColorButton";
+            this.LineColorButton.Size = new System.Drawing.Size(141, 23);
+            this.LineColorButton.TabIndex = 3;
+            this.LineColorButton.Text = "Change Line Color";
+            this.LineColorButton.UseVisualStyleBackColor = true;
+            this.LineColorButton.Click += new System.EventHandler(this.LineColorButton_Click);
+            // 
+            // ArrowColorButton
+            // 
+            this.ArrowColorButton.Location = new System.Drawing.Point(13, 123);
+            this.ArrowColorButton.Name = "ArrowColorButton";
+            this.ArrowColorButton.Size = new System.Drawing.Size(141, 23);
+            this.ArrowColorButton.TabIndex = 4;
+            this.ArrowColorButton.Text = "Change Arrow Color";
+            this.ArrowColorButton.UseVisualStyleBackColor = true;
+            this.ArrowColorButton.Click += new System.EventHandler(this.ArrowColorButton_Click);
+            // 
+            // DirectionCheckBox
+            // 
+            this.DirectionCheckBox.AutoSize = true;
+            this.DirectionCheckBox.Location = new System.Drawing.Point(16, 177);
+            this.DirectionCheckBox.Name = "DirectionCheckBox";
+            this.DirectionCheckBox.Size = new System.Drawing.Size(138, 17);
+            this.DirectionCheckBox.TabIndex = 5;
+            this.DirectionCheckBox.Text = "Change Arrow Direction";
+            this.DirectionCheckBox.UseVisualStyleBackColor = true;
+            // 
             // EditBinary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.DirectionCheckBox);
+            this.Controls.Add(this.ArrowColorButton);
+            this.Controls.Add(this.LineColorButton);
             this.Controls.Add(this.AcceptButton);
             this.Controls.Add(this.LabelTextBox);
             this.Controls.Add(this.label1);
@@ -79,5 +117,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox LabelTextBox;
         private System.Windows.Forms.Button AcceptButton;
+        private System.Windows.Forms.ColorDialog LineColorDialog;
+        private System.Windows.Forms.ColorDialog ArrowColorDialog;
+        private System.Windows.Forms.Button LineColorButton;
+        private System.Windows.Forms.Button ArrowColorButton;
+        private System.Windows.Forms.CheckBox DirectionCheckBox;
     }
 }

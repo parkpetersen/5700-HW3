@@ -17,6 +17,9 @@ namespace GuiLayer
         BinaryRelationship editedLine;
         Drawing TargetDrawing;
         Invoker _invoker;
+        Color NewLineColor;
+        Color NewArrowColor;
+        int directionModifier = 1;
 
         public EditBinary(BinaryRelationship line, Drawing drawing, Invoker invoker)
         {
@@ -25,15 +28,37 @@ namespace GuiLayer
             _invoker = invoker;
             editedLine = line;
             LabelTextBox.Text = editedLine.label;
+            NewLineColor = line.LineColor;
+            NewArrowColor = line.ArrowColor;
+
             
         }
 
         private void AcceptButton_Click(object sender, EventArgs e)
         {
-            EditBinaryCommand command = new EditBinaryCommand(editedLine, LabelTextBox.Text, TargetDrawing);
+            if (DirectionCheckBox.Checked)
+                directionModifier = directionModifier * -1;
+            EditBinaryCommand command = new EditBinaryCommand(editedLine, LabelTextBox.Text, TargetDrawing, NewLineColor, NewArrowColor, directionModifier);
             _invoker.EnqueueCommandForExecution(command);
-            //command.Execute();
             this.Hide();
+        }
+
+        private void LineColorButton_Click(object sender, EventArgs e)
+        {
+            DialogResult result = LineColorDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                NewLineColor = LineColorDialog.Color;
+            }
+        }
+
+        private void ArrowColorButton_Click(object sender, EventArgs e)
+        {
+            DialogResult result = ArrowColorDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                NewArrowColor = ArrowColorDialog.Color;
+            }
         }
     }
 }

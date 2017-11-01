@@ -44,9 +44,11 @@
   <ItemGroup>
     <Compile Include="Commands\AddCommand.cs" />
     <Compile Include="Commands\Command.cs" />
+    <Compile Include="Commands\CommandFactory.cs" />
     <Compile Include="Commands\DeleteCommand.cs" />
     <Compile Include="Commands\EditBinaryCommand.cs" />
     <Compile Include="Commands\EditClassCommand.cs" />
+    <Compile Include="Commands\EditDiagramCommand.cs" />
     <Compile Include="Commands\Invoker.cs" />
     <Compile Include="Commands\MoveClassCommand.cs" />
     <Compile Include="Commands\MoveLineCommand.cs" />
