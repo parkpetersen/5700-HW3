@@ -418,6 +418,206 @@ namespace GuiLayer
             {
                 Open();
             }
+            else if (e.KeyChar == 'u' || e.KeyChar == 'U')
+            {
+                _invoker.Undo();
+            }
+            else if(e.KeyChar == 'r' || e.KeyChar == 'R')
+            {
+                _invoker.Redo();
+            }
+        }
+
+        private void ClassIconPanel_Paint(object sender, PaintEventArgs e)
+        {
+            var p = sender as Panel;
+            var g = e.Graphics;
+
+            g.DrawRectangle(Pens.Black, p.Width/2-20, p.Height/2-15, 40, 30);
+            //g.FillRectangle(Brushes.Red, 0, 0, 20, 20);
+        }
+
+        private void BinarySelectPanel_Paint(object sender, PaintEventArgs e)
+        {
+            var p = sender as Panel;
+            var g = e.Graphics;
+            Point p1 = new Point(p.Width/2-10, p.Height/2);
+            Point p2 = new Point(p1.X, p1.Y + 5);
+            Point p3 = new Point(p1.X, p1.Y - 5);
+            Point p4 = new Point(p1.X + 10, p1.Y);
+            Point[] Points = new Point[]
+            {
+               p2,p3,p4
+            };
+            g.DrawPolygon(Pens.Black, Points);
+            g.FillPolygon(Brushes.Black, Points);
+            Point p5 = new Point(p1.X - 15, p1.Y);
+            Point p6 = new Point(p4.X + 15, p4.Y);
+            g.DrawLine(Pens.Black, p5, p6);
+        }
+
+        private void AggregationSelectPanel_Paint(object sender, PaintEventArgs e)
+        {
+            var p = sender as Panel;
+            var g = e.Graphics;
+            Point center = new Point(p.Width / 2, p.Height / 2);
+            Point p1 = new Point(center.X - 10, center.Y);
+            Point p2 = new Point(center.X, center.Y - 10);
+            Point p3 = new Point(center.X + 10, center.Y);
+            Point p4 = new Point(center.X, center.Y + 10);
+            Point[] Points = new Point[]
+            {
+                p1,p2,p3,p4
+            };
+            g.DrawPolygon(Pens.Black, Points);
+            g.FillPolygon(Brushes.Black, Points);
+            Point p5 = new Point(p1.X - 15, p1.Y);
+            g.DrawLine(Pens.Black, p5, p1);
+        }
+
+        private void CompositionSelectPanel_Paint(object sender, PaintEventArgs e)
+        {
+            var p = sender as Panel;
+            var g = e.Graphics;
+            Point center = new Point(p.Width / 2, p.Height / 2);
+            Point p1 = new Point(center.X - 10, center.Y);
+            Point p2 = new Point(center.X, center.Y - 10);
+            Point p3 = new Point(center.X + 10, center.Y);
+            Point p4 = new Point(center.X, center.Y + 10);
+            Point[] Points = new Point[]
+            {
+                p1,p2,p3,p4
+            };
+            g.DrawPolygon(Pens.Black, Points);
+            Point p5 = new Point(p1.X - 15, p1.Y);
+            g.DrawLine(Pens.Black, p5, p1);
+        }
+
+        private void GeneralizationSelectPanel_Paint(object sender, PaintEventArgs e)
+        {
+            var p = sender as Panel;
+            var g = e.Graphics;
+            Point p1 = new Point(p.Width / 2 - 10, p.Height / 2);
+            Point p2 = new Point(p1.X, p1.Y + 5);
+            Point p3 = new Point(p1.X, p1.Y - 5);
+            Point p4 = new Point(p1.X + 10, p1.Y);
+            Point[] Points = new Point[]
+            {
+               p2,p3,p4
+            };
+            g.DrawPolygon(Pens.Black, Points);
+            Point p5 = new Point(p1.X - 25, p1.Y);
+            g.DrawLine(Pens.Black, p5, p1);
+        }
+
+        private void DependencySelectPanel_Paint(object sender, PaintEventArgs e)
+        {
+            var p = sender as Panel;
+            var g = e.Graphics;
+            Point p1 = new Point(p.Width / 2 - 10, p.Height / 2);
+            Point p2 = new Point(p1.X, p1.Y + 5);
+            Point p3 = new Point(p1.X, p1.Y - 5);
+            Point p4 = new Point(p1.X + 10, p1.Y);
+            Point[] Points = new Point[]
+            {
+               p2,p3,p4
+            };
+            g.DrawPolygon(Pens.Black, Points);
+            Point p5 = new Point(p1.X - 25, p1.Y);
+            Pen pen = new Pen(Color.Black);
+            float[] pattern = { 5, 5, 5, 5 };
+            pen.DashPattern = pattern;
+            g.DrawLine(pen, p5, p1);
+        }
+
+        private void UndoSelectPanel_Paint(object sender, PaintEventArgs e)
+        {
+            var p = sender as Panel;
+            var g = e.Graphics;
+            Point center = new Point(p.Width / 2, p.Height / 2);
+            Rectangle rect = new Rectangle(center.X - 20, center.Y + 5, 40, 30);
+            //g.DrawRectangle(Pens.Black, rect);
+            g.DrawArc(Pens.Black, rect, 225 , 90);
+            Point p1 = new Point(p.Width / 2 - 2, p.Height / 2 + 5);
+            Point p2 = new Point(p1.X-12, p1.Y);
+            Point p3 = new Point(p1.X-12, p1.Y + 10);
+            Point p4 = new Point(p1.X - 22, p1.Y + 5);
+            Point[] Points = new Point[]
+            {
+               p2,p3,p4
+            };
+            g.DrawPolygon(Pens.Black, Points);
+        }
+
+        private void RedoSelectPanel_Paint(object sender, PaintEventArgs e)
+        {
+            var p = sender as Panel;
+            var g = e.Graphics;
+            Point center = new Point(p.Width / 2, p.Height / 2);
+            Rectangle rect = new Rectangle(center.X - 20, center.Y + 5, 40, 30);
+            //g.DrawRectangle(Pens.Black, rect);
+            g.DrawArc(Pens.Black, rect, 225, 90);
+            Point p1 = new Point(p.Width / 2 + 2, p.Height / 2 + 5);
+            Point p2 = new Point(p1.X + 12, p1.Y);
+            Point p3 = new Point(p1.X + 12, p1.Y + 10);
+            Point p4 = new Point(p1.X + 22, p1.Y + 5);
+            Point[] Points = new Point[]
+            {
+               p2,p3,p4
+            };
+            g.DrawPolygon(Pens.Black, Points);
+        }
+
+        private void MoveSelectPanel_Paint(object sender, PaintEventArgs e)
+        {
+            var p = sender as Panel;
+            var g = e.Graphics;
+            Point center = new Point(p.Width / 2, p.Height / 2);
+
+            Point p1 = new Point(center.X - 10, center.Y);
+            g.DrawLine(Pens.Black, center, p1);
+            Point p2 = new Point(p1.X, p1.Y + 5);
+            Point p3 = new Point(p1.X - 5, p1.Y);
+            Point p4 = new Point(p1.X, p1.Y - 5);
+            Point[] leftTri = new Point[] { p2, p3, p4 };
+            g.DrawPolygon(Pens.Black, leftTri);
+
+            Point p5 = new Point(center.X, center.Y - 10);
+            g.DrawLine(Pens.Black, center, p5);
+            Point p6 = new Point(p5.X - 5, p5.Y);
+            Point p7 = new Point(p5.X, p5.Y - 5);
+            Point p8 = new Point(p5.X + 5, p5.Y);
+            Point[] topTri = new Point[] { p6, p7, p8 };
+            g.DrawPolygon(Pens.Black, topTri);
+
+            Point p9 = new Point(center.X + 10, center.Y);
+            g.DrawLine(Pens.Black, center, p9);
+            Point p10 = new Point(p9.X, p9.Y - 5);
+            Point p11 = new Point(p9.X + 5, p9.Y);
+            Point p12 = new Point(p9.X, p9.Y + 5);
+            Point[] rightTri = new Point[] { p10, p11, p12 };
+            g.DrawPolygon(Pens.Black, rightTri);
+
+            Point p13 = new Point(center.X, center.Y + 10);
+            g.DrawLine(Pens.Black, center, p13);
+            Point p14 = new Point(p13.X - 5, p13.Y);
+            Point p15 = new Point(p13.X, p13.Y + 5);
+            Point p16 = new Point(p13.X + 5, p13.Y);
+            Point[] bottomTri = new Point[] { p14, p15, p16 };
+            g.DrawPolygon(Pens.Black, bottomTri);
+        }
+
+        private void DeleteToolSelectPanel_Paint(object sender, PaintEventArgs e)
+        {
+            var p = sender as Panel;
+            var g = e.Graphics;
+            Point center = new Point(p.Width / 2, p.Height / 2);
+
+            Rectangle rect = new Rectangle(p.Width / 2 - 20, p.Height / 2 - 15, 40, 30);
+            g.DrawEllipse(Pens.Black, rect);
+            Point p1 = new Point(p.Width / 2 + 20, p.Height / 2 - 15);
+            Point p2 = new Point(p.Width / 2 - 20, p.Height / 2 + 15);
+            g.DrawLine(Pens.Black, p1, p2);
         }
     }
 }

@@ -94,6 +94,7 @@
             this.ClassIconPanel.Name = "ClassIconPanel";
             this.ClassIconPanel.Size = new System.Drawing.Size(126, 55);
             this.ClassIconPanel.TabIndex = 0;
+            this.ClassIconPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ClassIconPanel_Paint);
             this.ClassIconPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ClassIconPanel_MouseUp);
             // 
             // label1
@@ -114,6 +115,7 @@
             this.BinarySelectPanel.Name = "BinarySelectPanel";
             this.BinarySelectPanel.Size = new System.Drawing.Size(126, 66);
             this.BinarySelectPanel.TabIndex = 1;
+            this.BinarySelectPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.BinarySelectPanel_Paint);
             this.BinarySelectPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BinarySelectPanel_MouseUp);
             // 
             // label2
@@ -154,6 +156,7 @@
             this.DependencySelectPanel.Name = "DependencySelectPanel";
             this.DependencySelectPanel.Size = new System.Drawing.Size(126, 71);
             this.DependencySelectPanel.TabIndex = 2;
+            this.DependencySelectPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.DependencySelectPanel_Paint);
             this.DependencySelectPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DependencySelectPanel_MouseUp);
             // 
             // Dependency
@@ -174,6 +177,7 @@
             this.AggregationSelectPanel.Name = "AggregationSelectPanel";
             this.AggregationSelectPanel.Size = new System.Drawing.Size(126, 58);
             this.AggregationSelectPanel.TabIndex = 3;
+            this.AggregationSelectPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.AggregationSelectPanel_Paint);
             this.AggregationSelectPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.AggregationSelectPanel_MouseUp);
             // 
             // label4
@@ -194,6 +198,7 @@
             this.CompositionSelectPanel.Name = "CompositionSelectPanel";
             this.CompositionSelectPanel.Size = new System.Drawing.Size(126, 62);
             this.CompositionSelectPanel.TabIndex = 4;
+            this.CompositionSelectPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.CompositionSelectPanel_Paint);
             this.CompositionSelectPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.CompositionSelectPanel_MouseUp);
             // 
             // label5
@@ -214,6 +219,7 @@
             this.GeneralizationSelectPanel.Name = "GeneralizationSelectPanel";
             this.GeneralizationSelectPanel.Size = new System.Drawing.Size(123, 65);
             this.GeneralizationSelectPanel.TabIndex = 5;
+            this.GeneralizationSelectPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.GeneralizationSelectPanel_Paint);
             this.GeneralizationSelectPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.GeneralizationSelectPanel_MouseUp);
             // 
             // Generalization
@@ -234,6 +240,7 @@
             this.DeleteToolSelectPanel.Name = "DeleteToolSelectPanel";
             this.DeleteToolSelectPanel.Size = new System.Drawing.Size(132, 47);
             this.DeleteToolSelectPanel.TabIndex = 6;
+            this.DeleteToolSelectPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.DeleteToolSelectPanel_Paint);
             this.DeleteToolSelectPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DeleteToolSelectPanel_MouseUp);
             // 
             // Delete
@@ -254,6 +261,7 @@
             this.RedoSelectPanel.Name = "RedoSelectPanel";
             this.RedoSelectPanel.Size = new System.Drawing.Size(125, 47);
             this.RedoSelectPanel.TabIndex = 7;
+            this.RedoSelectPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.RedoSelectPanel_Paint);
             this.RedoSelectPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.RedoSelectPanel_MouseDown);
             this.RedoSelectPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.RedoSelectPanel_MouseUp);
             // 
@@ -263,9 +271,9 @@
             this.label6.Enabled = false;
             this.label6.Location = new System.Drawing.Point(3, 4);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(33, 13);
+            this.label6.Size = new System.Drawing.Size(50, 13);
             this.label6.TabIndex = 0;
-            this.label6.Text = "Redo";
+            this.label6.Text = "Redo (R)";
             // 
             // UndoSelectPanel
             // 
@@ -275,6 +283,7 @@
             this.UndoSelectPanel.Name = "UndoSelectPanel";
             this.UndoSelectPanel.Size = new System.Drawing.Size(136, 47);
             this.UndoSelectPanel.TabIndex = 8;
+            this.UndoSelectPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.UndoSelectPanel_Paint);
             this.UndoSelectPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.UndoSelectPanel_MouseDown);
             this.UndoSelectPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.UndoSelectPanel_MouseUp);
             // 
@@ -284,9 +293,9 @@
             this.label7.Enabled = false;
             this.label7.Location = new System.Drawing.Point(3, 4);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(33, 13);
+            this.label7.Size = new System.Drawing.Size(50, 13);
             this.label7.TabIndex = 0;
-            this.label7.Text = "Undo";
+            this.label7.Text = "Undo (U)";
             // 
             // MoveSelectPanel
             // 
@@ -296,6 +305,7 @@
             this.MoveSelectPanel.Name = "MoveSelectPanel";
             this.MoveSelectPanel.Size = new System.Drawing.Size(123, 47);
             this.MoveSelectPanel.TabIndex = 9;
+            this.MoveSelectPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MoveSelectPanel_Paint);
             this.MoveSelectPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MoveSelectPanel_MouseUp);
             // 
             // label8
@@ -325,9 +335,9 @@
             this.label9.Enabled = false;
             this.label9.Location = new System.Drawing.Point(3, 4);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(32, 13);
+            this.label9.Size = new System.Drawing.Size(48, 13);
             this.label9.TabIndex = 0;
-            this.label9.Text = "Save";
+            this.label9.Text = "Save (S)";
             // 
             // OpenSelectPanel
             // 
@@ -346,9 +356,9 @@
             this.label10.Enabled = false;
             this.label10.Location = new System.Drawing.Point(4, 4);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(33, 13);
+            this.label10.Size = new System.Drawing.Size(50, 13);
             this.label10.TabIndex = 0;
-            this.label10.Text = "Open";
+            this.label10.Text = "Open (O)";
             // 
             // DiagramNameLabel
             // 
@@ -397,9 +407,9 @@
             this.label12.Enabled = false;
             this.label12.Location = new System.Drawing.Point(4, 6);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(29, 13);
+            this.label12.Size = new System.Drawing.Size(46, 13);
             this.label12.TabIndex = 0;
-            this.label12.Text = "New";
+            this.label12.Text = "New (N)";
             // 
             // MainForm
             // 
