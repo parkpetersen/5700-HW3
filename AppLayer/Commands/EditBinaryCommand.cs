@@ -14,8 +14,10 @@ namespace AppLayer.Commands
         Color newArrowColor;
         int oldDirection;
         int newDirection;
+        int oldThickness;
+        int newThickness;
 
-        public EditBinaryCommand(BinaryRelationship line, string label, Drawing drawing, Color lineColor, Color arrowColor, int direction)
+        public EditBinaryCommand(BinaryRelationship line, string label, Drawing drawing, Color lineColor, Color arrowColor, int direction, int thickness)
         {
             this.line = line;
             oldLabel = line.label;
@@ -27,18 +29,20 @@ namespace AppLayer.Commands
             newArrowColor = arrowColor;
             oldDirection = line.directionSwap;
             newDirection = direction;
+            oldThickness = line.LineThickness;
+            newThickness = thickness;
         }
 
         public override bool Execute()
         {
-            line.EditBinary(editedLabel, newLineColor, newDirection, newArrowColor);
+            line.EditBinary(editedLabel, newLineColor, newDirection, newArrowColor, newThickness);
             TargetDrawing.IsDirty = true;
             return true;
         }
 
         public override void Undo()
         {
-            line.EditBinary(oldLabel, oldLineColor, oldDirection, oldArrowColor);
+            line.EditBinary(oldLabel, oldLineColor, oldDirection, oldArrowColor, oldThickness);
             TargetDrawing.IsDirty = true;
         }
     }

@@ -36,6 +36,8 @@
             this.LineColorButton = new System.Windows.Forms.Button();
             this.ArrowColorButton = new System.Windows.Forms.Button();
             this.DirectionCheckBox = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.LineThicknessTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -66,7 +68,7 @@
             // 
             // LineColorButton
             // 
-            this.LineColorButton.Location = new System.Drawing.Point(13, 75);
+            this.LineColorButton.Location = new System.Drawing.Point(12, 110);
             this.LineColorButton.Name = "LineColorButton";
             this.LineColorButton.Size = new System.Drawing.Size(141, 23);
             this.LineColorButton.TabIndex = 3;
@@ -76,7 +78,7 @@
             // 
             // ArrowColorButton
             // 
-            this.ArrowColorButton.Location = new System.Drawing.Point(13, 123);
+            this.ArrowColorButton.Location = new System.Drawing.Point(12, 139);
             this.ArrowColorButton.Name = "ArrowColorButton";
             this.ArrowColorButton.Size = new System.Drawing.Size(141, 23);
             this.ArrowColorButton.TabIndex = 4;
@@ -94,11 +96,29 @@
             this.DirectionCheckBox.Text = "Change Arrow Direction";
             this.DirectionCheckBox.UseVisualStyleBackColor = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(24, 59);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Line Thickness";
+            // 
+            // LineThicknessTextBox
+            // 
+            this.LineThicknessTextBox.Location = new System.Drawing.Point(13, 76);
+            this.LineThicknessTextBox.Name = "LineThicknessTextBox";
+            this.LineThicknessTextBox.Size = new System.Drawing.Size(197, 20);
+            this.LineThicknessTextBox.TabIndex = 7;
+            // 
             // EditBinary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.LineThicknessTextBox);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.DirectionCheckBox);
             this.Controls.Add(this.ArrowColorButton);
             this.Controls.Add(this.LineColorButton);
@@ -122,5 +142,7 @@
         private System.Windows.Forms.Button LineColorButton;
         private System.Windows.Forms.Button ArrowColorButton;
         private System.Windows.Forms.CheckBox DirectionCheckBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox LineThicknessTextBox;
     }
 }

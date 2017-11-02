@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using AppLayer.DrawingComponents;
 using AppLayer.Commands;
@@ -110,7 +104,9 @@ namespace GuiLayer
                     }
                     else
                     {
-
+                        Relationship foundLine = foundSymbol as Relationship;
+                        EditLine editLineWindow = new EditLine(foundLine, _invoker, TargetDrawing);
+                        editLineWindow.Show();
                     }
                 }
                 else if(_SelectedTool == "Delete")
@@ -132,6 +128,12 @@ namespace GuiLayer
                             }
                         }
                         DeleteCommand command = new DeleteCommand(classSymbol, TargetDrawing);
+                        _invoker.EnqueueCommandForExecution(command);
+                    }
+                    else if(foundSymbol.type == "Binary" || foundSymbol.type == "Aggregation" || foundSymbol.type == "Composition" || foundSymbol.type == "Generalization" || foundSymbol.type == "Dependency")
+                    {
+                        Relationship line = foundSymbol as Relationship;
+                        DeleteCommand command = new DeleteCommand(line, TargetDrawing);
                         _invoker.EnqueueCommandForExecution(command);
                     }
                 }
@@ -286,6 +288,7 @@ namespace GuiLayer
             SaveSelectPanel.BackColor = Color.LightBlue;
             OpenSelectPanel.BackColor = Color.LightBlue;
             OptionsSelectPanel.BackColor = Color.LightBlue;
+            NewSelectPanel.BackColor = Color.LightBlue;
         }
 
         private void UndoSelectPanel_MouseUp(object sender, MouseEventArgs e)
@@ -320,13 +323,19 @@ namespace GuiLayer
         private void SaveSelectPanel_MouseUp(object sender, MouseEventArgs e)
         {
             ResetColors();
+            Save();
+            
+        }
+
+        private void Save()
+        {
             var dialog = new SaveFileDialog
             {
                 DefaultExt = "json",
                 RestoreDirectory = true,
                 Filter = @"JSON files (*.json)|*.json|All files (*.*)|*.*"
             };
-            if(dialog.ShowDialog() == DialogResult.OK)
+            if (dialog.ShowDialog() == DialogResult.OK)
             {
                 SaveCommand command = new SaveCommand(dialog.FileName);
                 command.TargetDrawing = TargetDrawing;
@@ -345,6 +354,12 @@ namespace GuiLayer
         }
 
         private void OpenSelectPanel_MouseUp(object sender, MouseEventArgs e)
+        {
+            ResetColors();
+            Open();            
+        }
+
+        private void Open()
         {
             var dialog = new OpenFileDialog
             {
@@ -373,6 +388,36 @@ namespace GuiLayer
         private void OptionsSelectPanel_MouseDown(object sender, MouseEventArgs e)
         {
             OptionsSelectPanel.BackColor = Color.LightYellow;
+        }
+
+        private void NewSelectPanel_MouseUp(object sender, MouseEventArgs e)
+        {
+            ResetColors();
+            NewDrawingCommand command = new NewDrawingCommand(TargetDrawing);
+            _invoker.EnqueueCommandForExecution(command);
+            
+        }
+
+        private void NewSelectPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            NewSelectPanel.BackColor = Color.LightYellow;
+        }
+
+        private void MainForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == 'n' || e.KeyChar == 'N')
+            {
+                NewDrawingCommand command = new NewDrawingCommand(TargetDrawing);
+                _invoker.EnqueueCommandForExecution(command);
+            }
+            else if(e.KeyChar == 's' || e.KeyChar == 'S')
+            {
+                Save();
+            }
+            else if(e.KeyChar == 'o' || e.KeyChar == 'O')
+            {
+                Open();
+            }
         }
     }
 }

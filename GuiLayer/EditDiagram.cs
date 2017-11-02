@@ -20,6 +20,9 @@ namespace GuiLayer
             TargetDrawing = drawing;
             NameTextBox.Text = TargetDrawing.DrawingName;
             _invoker = invoker;
+            newBackgroundColor = TargetDrawing.BackGroundColor;
+            newForegroundColor = TargetDrawing.ForeGroundColor;
+            newClassColor = TargetDrawing.DefaultClassColor;
         }
 
         private void BackgroundColorButton_Click(object sender, System.EventArgs e)

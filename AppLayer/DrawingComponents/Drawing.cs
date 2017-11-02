@@ -127,10 +127,10 @@ namespace AppLayer.DrawingComponents
                 }
                 foreach(var l in _RelationShipLines)
                 {
-                    if(location.X >= ((l.Location2.X + l.Location1.X) / 2) - 10 &&
-                        location.X < ((l.Location2.X + l.Location1.X) / 2) + 10 &&
-                        location.Y >= ((l.Location2.Y + l.Location1.Y) / 2) - 10 &&
-                        location.Y < ((l.Location2.Y + l.Location1.Y) / 2) + 10)
+                    if(location.X >= ((l.Location2.X + l.Location1.X) / 2) - 40 &&
+                        location.X < ((l.Location2.X + l.Location1.X) / 2) + 40 &&
+                        location.Y >= ((l.Location2.Y + l.Location1.Y) / 2) - 40 &&
+                        location.Y < ((l.Location2.Y + l.Location1.Y) / 2) + 40)
                     {
                         result = l;
                     } 
@@ -220,6 +220,10 @@ namespace AppLayer.DrawingComponents
             {
                 this._ClassSymbols = loadedSymbols._ClassSymbols;
                 this._RelationShipLines = loadedSymbols._RelationShipLines;
+                this.BackGroundColor = loadedSymbols.BackGroundColor;
+                this.ForeGroundColor = loadedSymbols.ForeGroundColor;
+                this.DefaultClassColor = loadedSymbols.DefaultClassColor;
+                this.DrawingName = loadedSymbols.DrawingName;
                 IsDirty = true;
             }
         }

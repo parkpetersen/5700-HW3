@@ -20,6 +20,7 @@ namespace GuiLayer
         Color NewLineColor;
         Color NewArrowColor;
         int directionModifier = 1;
+        int newLineThickness;
 
         public EditBinary(BinaryRelationship line, Drawing drawing, Invoker invoker)
         {
@@ -28,8 +29,10 @@ namespace GuiLayer
             _invoker = invoker;
             editedLine = line;
             LabelTextBox.Text = editedLine.label;
+            LineThicknessTextBox.Text = editedLine.LineThickness.ToString();
             NewLineColor = line.LineColor;
             NewArrowColor = line.ArrowColor;
+            newLineThickness = editedLine.LineThickness;
 
             
         }
@@ -38,7 +41,8 @@ namespace GuiLayer
         {
             if (DirectionCheckBox.Checked)
                 directionModifier = directionModifier * -1;
-            EditBinaryCommand command = new EditBinaryCommand(editedLine, LabelTextBox.Text, TargetDrawing, NewLineColor, NewArrowColor, directionModifier);
+            newLineThickness = Convert.ToInt32(LineThicknessTextBox.Text);
+            EditBinaryCommand command = new EditBinaryCommand(editedLine, LabelTextBox.Text, TargetDrawing, NewLineColor, NewArrowColor, directionModifier, newLineThickness);
             _invoker.EnqueueCommandForExecution(command);
             this.Hide();
         }

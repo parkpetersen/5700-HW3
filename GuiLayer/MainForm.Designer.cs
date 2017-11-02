@@ -58,6 +58,8 @@
             this.DiagramNameLabel = new System.Windows.Forms.Label();
             this.OptionsSelectPanel = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
+            this.NewSelectPanel = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
             this.ClassIconPanel.SuspendLayout();
             this.BinarySelectPanel.SuspendLayout();
             this.EditSelectPanel.SuspendLayout();
@@ -72,6 +74,7 @@
             this.SaveSelectPanel.SuspendLayout();
             this.OpenSelectPanel.SuspendLayout();
             this.OptionsSelectPanel.SuspendLayout();
+            this.NewSelectPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // DrawingPanel
@@ -96,6 +99,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Enabled = false;
             this.label1.Location = new System.Drawing.Point(7, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(32, 13);
@@ -115,7 +119,8 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 0);
+            this.label2.Enabled = false;
+            this.label2.Location = new System.Drawing.Point(3, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 13);
             this.label2.TabIndex = 0;
@@ -134,6 +139,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Enabled = false;
             this.label3.Location = new System.Drawing.Point(3, 4);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(25, 13);
@@ -153,6 +159,7 @@
             // Dependency
             // 
             this.Dependency.AutoSize = true;
+            this.Dependency.Enabled = false;
             this.Dependency.Location = new System.Drawing.Point(10, 4);
             this.Dependency.Name = "Dependency";
             this.Dependency.Size = new System.Drawing.Size(68, 13);
@@ -172,6 +179,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.Enabled = false;
             this.label4.Location = new System.Drawing.Point(3, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 13);
@@ -191,6 +199,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.Enabled = false;
             this.label5.Location = new System.Drawing.Point(3, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(64, 13);
@@ -210,6 +219,7 @@
             // Generalization
             // 
             this.Generalization.AutoSize = true;
+            this.Generalization.Enabled = false;
             this.Generalization.Location = new System.Drawing.Point(6, 4);
             this.Generalization.Name = "Generalization";
             this.Generalization.Size = new System.Drawing.Size(74, 13);
@@ -229,6 +239,7 @@
             // Delete
             // 
             this.Delete.AutoSize = true;
+            this.Delete.Enabled = false;
             this.Delete.Location = new System.Drawing.Point(3, 4);
             this.Delete.Name = "Delete";
             this.Delete.Size = new System.Drawing.Size(38, 13);
@@ -239,7 +250,7 @@
             // 
             this.RedoSelectPanel.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.RedoSelectPanel.Controls.Add(this.label6);
-            this.RedoSelectPanel.Location = new System.Drawing.Point(647, 53);
+            this.RedoSelectPanel.Location = new System.Drawing.Point(488, 53);
             this.RedoSelectPanel.Name = "RedoSelectPanel";
             this.RedoSelectPanel.Size = new System.Drawing.Size(125, 47);
             this.RedoSelectPanel.TabIndex = 7;
@@ -249,6 +260,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.Enabled = false;
             this.label6.Location = new System.Drawing.Point(3, 4);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(33, 13);
@@ -259,7 +271,7 @@
             // 
             this.UndoSelectPanel.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.UndoSelectPanel.Controls.Add(this.label7);
-            this.UndoSelectPanel.Location = new System.Drawing.Point(493, 53);
+            this.UndoSelectPanel.Location = new System.Drawing.Point(346, 53);
             this.UndoSelectPanel.Name = "UndoSelectPanel";
             this.UndoSelectPanel.Size = new System.Drawing.Size(136, 47);
             this.UndoSelectPanel.TabIndex = 8;
@@ -269,6 +281,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.Enabled = false;
             this.label7.Location = new System.Drawing.Point(3, 4);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(33, 13);
@@ -279,15 +292,16 @@
             // 
             this.MoveSelectPanel.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.MoveSelectPanel.Controls.Add(this.label8);
-            this.MoveSelectPanel.Location = new System.Drawing.Point(353, 53);
+            this.MoveSelectPanel.Location = new System.Drawing.Point(660, 53);
             this.MoveSelectPanel.Name = "MoveSelectPanel";
-            this.MoveSelectPanel.Size = new System.Drawing.Size(123, 49);
+            this.MoveSelectPanel.Size = new System.Drawing.Size(123, 47);
             this.MoveSelectPanel.TabIndex = 9;
             this.MoveSelectPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MoveSelectPanel_MouseUp);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.Enabled = false;
             this.label8.Location = new System.Drawing.Point(4, 4);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(34, 13);
@@ -308,6 +322,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.Enabled = false;
             this.label9.Location = new System.Drawing.Point(3, 4);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(32, 13);
@@ -328,6 +343,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
+            this.label10.Enabled = false;
             this.label10.Location = new System.Drawing.Point(4, 4);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(33, 13);
@@ -357,17 +373,40 @@
             // label11
             // 
             this.label11.AutoSize = true;
+            this.label11.Enabled = false;
             this.label11.Location = new System.Drawing.Point(3, 1);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(43, 13);
             this.label11.TabIndex = 0;
             this.label11.Text = "Options";
             // 
+            // NewSelectPanel
+            // 
+            this.NewSelectPanel.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.NewSelectPanel.Controls.Add(this.label12);
+            this.NewSelectPanel.Location = new System.Drawing.Point(56, 53);
+            this.NewSelectPanel.Name = "NewSelectPanel";
+            this.NewSelectPanel.Size = new System.Drawing.Size(82, 47);
+            this.NewSelectPanel.TabIndex = 14;
+            this.NewSelectPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.NewSelectPanel_MouseDown);
+            this.NewSelectPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.NewSelectPanel_MouseUp);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Enabled = false;
+            this.label12.Location = new System.Drawing.Point(4, 6);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(29, 13);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "New";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1078, 667);
+            this.Controls.Add(this.NewSelectPanel);
             this.Controls.Add(this.OptionsSelectPanel);
             this.Controls.Add(this.DiagramNameLabel);
             this.Controls.Add(this.OpenSelectPanel);
@@ -386,6 +425,7 @@
             this.Controls.Add(this.DrawingPanel);
             this.Name = "MainForm";
             this.Text = "Form1";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MainForm_KeyPress);
             this.ClassIconPanel.ResumeLayout(false);
             this.ClassIconPanel.PerformLayout();
             this.BinarySelectPanel.ResumeLayout(false);
@@ -414,6 +454,8 @@
             this.OpenSelectPanel.PerformLayout();
             this.OptionsSelectPanel.ResumeLayout(false);
             this.OptionsSelectPanel.PerformLayout();
+            this.NewSelectPanel.ResumeLayout(false);
+            this.NewSelectPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -451,6 +493,8 @@
         private System.Windows.Forms.Label DiagramNameLabel;
         private System.Windows.Forms.Panel OptionsSelectPanel;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel NewSelectPanel;
+        private System.Windows.Forms.Label label12;
     }
 }
 

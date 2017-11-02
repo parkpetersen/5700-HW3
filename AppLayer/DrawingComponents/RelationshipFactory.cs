@@ -53,7 +53,9 @@ namespace AppLayer.DrawingComponents
             }
             else if(type == "Dependency")
             {
-                return new DependencyRelationship(location1, location2, drawing.ForeGroundColor);
+                Symbol symbol = drawing.FindSymbolAtPosition(location1);
+                ClassSymbol classSymbol = symbol as ClassSymbol;
+                return new DependencyRelationship(location1, location2, classSymbol, drawing.ForeGroundColor);
             }
             else
             {
