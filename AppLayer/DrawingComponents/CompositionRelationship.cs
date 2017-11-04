@@ -40,9 +40,8 @@ namespace AppLayer.DrawingComponents
             };
             graphics.DrawLine(pen, p3, Location2);
             graphics.DrawPolygon(pen, points);
-            Brush brush = new SolidBrush(SymbolFillColor);
-            if(SymbolFillColor != Color.White)
-                graphics.FillPolygon(brush, points);
+            graphics.FillPolygon(Brushes.Black, points);
+
             pen.Dispose();
 
         }

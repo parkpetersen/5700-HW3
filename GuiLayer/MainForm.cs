@@ -28,7 +28,6 @@ namespace GuiLayer
             timer.Tick += new EventHandler(timer_tick);
             timer.Start();
             ResetColors();
-            //makeTools();
             moveToLocation = defaultLocation;
             _invoker.Start();
 
@@ -470,7 +469,6 @@ namespace GuiLayer
                 p1,p2,p3,p4
             };
             g.DrawPolygon(Pens.Black, Points);
-            g.FillPolygon(Brushes.Black, Points);
             Point p5 = new Point(p1.X - 15, p1.Y);
             g.DrawLine(Pens.Black, p5, p1);
         }
@@ -489,6 +487,7 @@ namespace GuiLayer
                 p1,p2,p3,p4
             };
             g.DrawPolygon(Pens.Black, Points);
+            g.FillPolygon(Brushes.Black, Points);
             Point p5 = new Point(p1.X - 15, p1.Y);
             g.DrawLine(Pens.Black, p5, p1);
         }

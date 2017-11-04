@@ -19,9 +19,7 @@ namespace AppLayer.Commands
         public AddCommand(string symbolType, Point location1, Point location2, Drawing drawing)
         {
             this.TargetDrawing = drawing;
-            //RelationshipFactory = RelationshipFactory.Instance;
-            //use factory here to create the right kind of symbol based on the string passed in.
-            //for now creates a class
+
             if (symbolType == "Class")
             {
                 Location1 = location1;
