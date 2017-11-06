@@ -174,34 +174,6 @@ namespace GuiLayer
             }
         }
 
-        /**
-        private void makeTools()
-        {
-            DrawToolIcons(ClassIconPanel, "Class");
-        }
-
-        private void DrawToolIcons(Panel panel, string type)
-        {
-            Pen pen = new Pen(Color.Black);
-            Brush brush = new SolidBrush(Color.Purple);
-            if(_selectionBuffer == null)
-            {
-                _selectionBuffer = new Bitmap(panel.Width, panel.Height);
-                _selectionBufferGraphics = Graphics.FromImage(_selectionBuffer);
-                _selectionGraphics = panel.CreateGraphics();
-            }
-            if(type == "Class")
-            {
-                Point location = new Point(0, 0);
-                Size size = new Size(20, 20);
-                Rectangle rect = new Rectangle(location, size);
-                _selectionGraphics.DrawRectangle(pen, rect);
-                _selectionGraphics.FillRectangle(brush, rect);
-            }
-            
-        }
-    **/
-
         private void DisplayDrawing()
         {
             if (_imageBuffer == null)
