@@ -79,6 +79,12 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelectedToolStates\DeleteState.cs" />
+    <Compile Include="SelectedToolStates\EditState.cs" />
+    <Compile Include="SelectedToolStates\MoveState.cs" />
+    <Compile Include="SelectedToolStates\RelationshipState.cs" />
+    <Compile Include="SelectedToolStates\ClassState.cs" />
+    <Compile Include="SelectedToolStates\SelectedToolState.cs" />
     <EmbeddedResource Include="EditBinary.resx">
       <DependentUpon>EditBinary.cs</DependentUpon>
     </EmbeddedResource>
