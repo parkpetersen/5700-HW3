@@ -54,6 +54,7 @@
     <Compile Include="Commands\MoveLineCommand.cs" />
     <Compile Include="Commands\NewDrawingCommand.cs" />
     <Compile Include="Commands\OpenCommand.cs" />
+    <Compile Include="Commands\RandomizeCommand.cs" />
     <Compile Include="Commands\RedoCommand.cs" />
     <Compile Include="Commands\SaveCommand.cs" />
     <Compile Include="Commands\UndoCommand.cs" />

@@ -152,6 +152,7 @@ namespace GuiLayer
             OpenSelectPanel.BackColor = Color.LightBlue;
             OptionsSelectPanel.BackColor = Color.LightBlue;
             NewSelectPanel.BackColor = Color.LightBlue;
+            RandomizePanel.BackColor = Color.LightBlue;
         }
 
         private void UndoSelectPanel_MouseUp(object sender, MouseEventArgs e)
@@ -483,6 +484,18 @@ namespace GuiLayer
             Point p1 = new Point(p.Width / 2 + 20, p.Height / 2 - 15);
             Point p2 = new Point(p.Width / 2 - 20, p.Height / 2 + 15);
             g.DrawLine(Pens.Black, p1, p2);
+        }
+
+        private void RandomizePanel_MouseUp(object sender, MouseEventArgs e)
+        {
+            ResetColors();
+            RandomizeCommand cmd = new RandomizeCommand(TargetDrawing);
+            _invoker.EnqueueCommandForExecution(cmd);
+        }
+
+        private void RandomizePanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            RandomizePanel.BackColor = Color.LightYellow;
         }
     }
 }

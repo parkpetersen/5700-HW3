@@ -17,6 +17,7 @@ namespace AppLayer.DrawingComponents
         public virtual void Draw(Graphics graphics) { }
         [DataMember]
         public string label { get; set; }
+        public virtual void Randomize() { }
 
     }
 }

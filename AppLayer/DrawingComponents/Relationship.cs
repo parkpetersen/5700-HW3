@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Runtime.Serialization;
 
 namespace AppLayer.DrawingComponents
@@ -37,6 +38,18 @@ namespace AppLayer.DrawingComponents
             LineThickness = newThickness;
             SymbolFillColor = newFillColor;
             SymbolSizeMultiplier = newMultiplier;
+        }
+
+        public override void Randomize()
+        {
+            Random r = new Random();
+            Random r2 = new Random(Location1.X + Location2.Y * r.Next());
+            this.LineColor = ClassSymbol.RandomColor[r2.Next(0, ClassSymbol.RandomColor.Length)];
+            if (type != "Composition")
+            {
+                this.SymbolFillColor = ClassSymbol.RandomColor[(r.Next(0, ClassSymbol.RandomColor.Length) + r.Next(0, ClassSymbol.RandomColor.Length)) % ClassSymbol.RandomColor.Length];
+            }
+                    
         }
 
     }

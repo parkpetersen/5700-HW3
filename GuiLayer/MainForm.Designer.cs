@@ -60,6 +60,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.NewSelectPanel = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
+            this.RandomizePanel = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
             this.ClassIconPanel.SuspendLayout();
             this.BinarySelectPanel.SuspendLayout();
             this.EditSelectPanel.SuspendLayout();
@@ -75,6 +77,7 @@
             this.OpenSelectPanel.SuspendLayout();
             this.OptionsSelectPanel.SuspendLayout();
             this.NewSelectPanel.SuspendLayout();
+            this.RandomizePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // DrawingPanel
@@ -411,11 +414,33 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "New (N)";
             // 
+            // RandomizePanel
+            // 
+            this.RandomizePanel.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.RandomizePanel.Controls.Add(this.label13);
+            this.RandomizePanel.Location = new System.Drawing.Point(789, 13);
+            this.RandomizePanel.Name = "RandomizePanel";
+            this.RandomizePanel.Size = new System.Drawing.Size(132, 34);
+            this.RandomizePanel.TabIndex = 15;
+            this.RandomizePanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.RandomizePanel_MouseDown);
+            this.RandomizePanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.RandomizePanel_MouseUp);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Enabled = false;
+            this.label13.Location = new System.Drawing.Point(6, 4);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(60, 13);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Randomize";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1078, 667);
+            this.Controls.Add(this.RandomizePanel);
             this.Controls.Add(this.NewSelectPanel);
             this.Controls.Add(this.OptionsSelectPanel);
             this.Controls.Add(this.DiagramNameLabel);
@@ -466,6 +491,8 @@
             this.OptionsSelectPanel.PerformLayout();
             this.NewSelectPanel.ResumeLayout(false);
             this.NewSelectPanel.PerformLayout();
+            this.RandomizePanel.ResumeLayout(false);
+            this.RandomizePanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -505,6 +532,8 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel NewSelectPanel;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Panel RandomizePanel;
+        private System.Windows.Forms.Label label13;
     }
 }
 
